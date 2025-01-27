@@ -1,14 +1,15 @@
 import { z } from 'zod';
 import { fetchPostsApi } from '~/server/utils/fetchPosts';
+import { urlSchema } from "~/server/schemas/urlSchema";
 
 export default defineEventHandler(async (event) => {
-	const querySchema = z.object({
-		url: z.string().refine(value => !value || /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[\w.-]*)*\/?$/.test(value)),
-	});
 	const wpDetectSchema = z.object({
-		data: z.boolean(),
+		data: z.object({
+			isWp: z.boolean(),
+			url: z.string(),
+		}),
 	});
-	const query = await getValidatedQuery(event, querySchema.safeParse);
+	const query = await getValidatedQuery(event, urlSchema.safeParse);
 
 	if (!query.success) {
 		throw createError({ data: query.error.format() });
@@ -25,7 +26,6 @@ export default defineEventHandler(async (event) => {
 	}
 
 	return {
-		url: query.data.url,
 		...parsed.data
 	};
 });
