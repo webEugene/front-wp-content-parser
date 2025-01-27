@@ -5,8 +5,12 @@ const route = useRoute();
 const links = ref([
   { label: 'WP Check',to: '/wp-check'},
   {
-    label: 'Sitemap search',
-    to: '/sitemap-search',
+    label: 'Sitemap test',
+    to: '/sitemap-test',
+  },
+  {
+    label: 'Sitemap Extractor',
+    to: '/sitemap-extractor',
   }
 ]);
 
@@ -32,8 +36,8 @@ const getLinkClass = (path: string) => {
       <div class="header-controls flex items-center">
 <!--        <Icon name="carbon:awake" />-->
 <!--        <Icon name="carbon:asleep" />-->
-        <NuxtLink to="#" class="text-sm/6 font-semibold text-gray-900 mr-2">Log in</NuxtLink>
-        <NuxtLink to="#" class="rounded-md border border-gray-600 bg-gray-200 px-2 py-1.5 text-sm font-semibold hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</NuxtLink>
+        <NuxtLink to="/auth/login" class="text-sm/6 font-semibold text-gray-900 mr-2">Log in</NuxtLink>
+        <NuxtLink to="/auth/register" class="rounded-md border border-gray-600 bg-gray-200 px-2 py-1.5 text-sm font-semibold hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Sign in</NuxtLink>
       </div>
     </nav>
   </header>

@@ -3,5 +3,9 @@
 </script>
 
 <template>
-  <div>dfdfdf</div>
+
 </template>
+
+<style scoped>
+
+</style>
