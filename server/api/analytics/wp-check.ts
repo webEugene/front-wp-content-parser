@@ -3,7 +3,8 @@ import { fetchAnalyticsApi } from '~/server/utils/fetchAnalytics';
 
 export default defineEventHandler(async (event) => {
 	const filterSchema = z.object({
-		page: z.number().default(1),
+		page: z.string().default("1"),
+		limit: z.string().default("5")
 	});
 	const query = await getValidatedQuery(event, filterSchema.safeParse);
 
@@ -11,17 +12,20 @@ export default defineEventHandler(async (event) => {
 		throw createError({ data: query.error.format() });
 	}
 
-	const analyticSchema = z.array(z.object({
-		_id: z.string(),
-		website: z.string(),
-		tries: z.number(),
-		host: z.string(),
-		wpDetect: z.boolean(),
-	}));
+	const analyticSchema = z.object({
+		items: z.array(z.object({
+			_id: z.string(),
+			website: z.string(),
+			tries: z.number(),
+			host: z.string(),
+			wpDetect: z.boolean(),
+		})).default([]),
+		totalPages: z.number(),
+	});
 
 	const { getAnalyticsApi } = fetchAnalyticsApi();
 
-	const response = await getAnalyticsApi(query);
+	const response = await getAnalyticsApi(query.data);
 
 	const parsed = analyticSchema.safeParse(response);
 

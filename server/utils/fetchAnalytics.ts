@@ -1,9 +1,9 @@
 export const fetchAnalyticsApi = () => {
 	const { apiUrl } = useAppConfig();
 
-	const getAnalyticsApi = async (filterData: { page: number }) => {
-		const { page } = filterData;
-		return await $fetch(`${apiUrl}api/v1/analytics/wp-check?page=${page}`);
+	const getAnalyticsApi = async (filterData: { page: string, limit: string }) => {
+		const { page, limit } = filterData;
+		return await $fetch(`${apiUrl}api/v1/analytics/wp-check?limit=${limit}&page=${page}`);
 	};
 
 	const getSitemapTestsAnalyticsApi = async () => {

@@ -14,7 +14,7 @@ const links = ref([
 		to: '/sitemap-extractor',
 	}, {
 		label: 'Link grabber',
-		to: '#',
+		to: '/link-grabber',
 	},
 ]);
 // https://chromewebstore.google.com/detail/link-grabber/caodelkhipncidmoebgbbeemedohcdma
