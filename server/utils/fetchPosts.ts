@@ -47,10 +47,29 @@ export const fetchPostsApi = () => {
     });
   };
 
+  interface ICreateReport {
+    pageName: string;
+    email?: string | null;
+    report: string;
+  }
+
+  const createReport = async (data: ICreateReport) => {
+    const { pageName, email, report } = data;
+    return await $fetch(`${apiUrl}api/v1/reports/create-report`, {
+      method: "POST",
+      body: {
+        pageName,
+        email,
+        report,
+      },
+    });
+  };
+
   return {
     getWpDetectCheck,
     getSitemapDetectCheck,
     getExtractedSitemapList,
     getGrabbedLinks,
+    createReport,
   };
 };

@@ -66,7 +66,7 @@
               Users
             </nuxt-link>
             <nuxt-link
-              to="#"
+              to="/admin/report"
               class="flex items-center px-4 py-2 text-gray-100 hover:bg-gray-400 hover:bg-opacity-25 rounded-2xl"
             >
               <icon name="tabler:message-report" size="1.4em" class="mr-1" />
@@ -111,4 +111,5 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
