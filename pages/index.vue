@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Hero from "~/components/Hero.vue";
+</script>
 
 <template>
-  <div class="hero">here will be hero block</div>
+    <hero />
 </template>
