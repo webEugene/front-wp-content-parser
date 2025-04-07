@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="hero">here will be hero block</div>
+  <div>fgdfgdfgd</div>
 </template>
+
+<style scoped></style>
