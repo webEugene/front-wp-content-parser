@@ -2,7 +2,7 @@ export const fetchPostsApi = () => {
   const { apiUrl } = useAppConfig();
 
   const getWpDetectCheck = async (url: string, host: string | undefined) => {
-    return await $fetch(`${apiUrl}api/v1/urls/wp-check`, {
+    return await $fetch(`${apiUrl}urls/wp-check`, {
       method: "POST",
       body: {
         url,
@@ -15,7 +15,7 @@ export const fetchPostsApi = () => {
     url: string,
     host: string | undefined,
   ) => {
-    return await $fetch(`${apiUrl}api/v1/urls/sitemap-check`, {
+    return await $fetch(`${apiUrl}urls/sitemap-check`, {
       method: "POST",
       body: {
         url,
@@ -28,7 +28,7 @@ export const fetchPostsApi = () => {
     url: string,
     host: string | undefined,
   ) => {
-    return await $fetch(`${apiUrl}api/v1/urls/sitemap-extract`, {
+    return await $fetch(`${apiUrl}urls/sitemap-extract`, {
       method: "POST",
       body: {
         url,
@@ -38,7 +38,7 @@ export const fetchPostsApi = () => {
   };
 
   const getGrabbedLinks = async (url: string, host: string | undefined) => {
-    return await $fetch(`${apiUrl}api/v1/urls/grab-links`, {
+    return await $fetch(`${apiUrl}urls/grab-links`, {
       method: "POST",
       body: {
         url,
@@ -55,7 +55,7 @@ export const fetchPostsApi = () => {
 
   const createReport = async (data: ICreateReport) => {
     const { pageName, email, report } = data;
-    return await $fetch(`${apiUrl}api/v1/reports/create-report`, {
+    return await $fetch(`${apiUrl}reports/create-report`, {
       method: "POST",
       body: {
         pageName,
