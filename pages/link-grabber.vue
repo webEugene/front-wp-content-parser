@@ -2,7 +2,11 @@
 import { ref } from "vue";
 import { useField } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
-import { z } from "zod";
+import HeadingPage from "~/components/molecules/HeadingPage.vue";
+import { urlWithMessageSchema } from "~/schemas/urlSchema";
+import BaseButton from "~/components/atoms/BaseButton.vue";
+import ProgressCircleSvg from "~/components/atoms/ProgressCircleSvg.vue";
+import BaseAlert from "~/components/atoms/BaseAlert.vue";
 
 interface ILinkData {
   link: string;
@@ -10,20 +14,7 @@ interface ILinkData {
   origin: string;
 }
 
-const urlSchema = toTypedSchema(
-  z
-    .string()
-    .refine(
-      (value) =>
-        !value ||
-        /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[\w.-]*)*\/?$/.test(
-          value,
-        ),
-      {
-        message: "Please provide a valid URL",
-      },
-    ),
-);
+const urlSchema = toTypedSchema(urlWithMessageSchema);
 
 const { value: url, errorMessage } = useField("url", urlSchema);
 
@@ -55,6 +46,7 @@ async function grabLink() {
     } else {
       response.value = data.value;
       error.value = null;
+      url.value = "";
     }
   } catch (err) {
     error.value = err.message || "Something went wrong!";
@@ -106,116 +98,90 @@ const filteredItems = computed(() => {
 </script>
 
 <template>
-  <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-    <div class="p-5 bg-amber-100">
-      <h1 class="text-3xl font-bold tracking-tight text-gray-900">
-        Link Grabber
-      </h1>
-    </div>
-    <div
-      class="form-wp-check w-2/4 p-2 mx-auto flex justify-center"
-      :class="errorMessage ? 'items-baseline' : 'items-center'"
-    >
-      <div class="w-96">
-        <input
-          v-model="url"
-          name="url"
-          type="text"
-          placeholder="Enter a valid URL"
-          class="block w-full rounded-l-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-        />
-        <span v-if="errorMessage" class="error font-bold text-amber-700">{{
-          errorMessage
-        }}</span>
-      </div>
-
-      <button
-        class="flex disabled:opacity-75 disabled:pointer-events-none rounded-r-md bg-indigo-600 px-5 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-        :disabled="!url || errorMessage || loading"
-        @click.prevent="grabLink"
+  <div>
+    <heading-page heading="Link Grabber">
+      <template #text>
+        <p>bla</p>
+      </template>
+    </heading-page>
+    <div class="wrapper mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <div
+        class="form-wp-check w-2/4 p-2 mx-auto flex justify-center"
+        :class="errorMessage ? 'items-baseline' : 'items-center'"
       >
-        <svg
-          v-if="loading"
-          class="w-5 h-5 mr-2 animate-spin"
-          viewBox="0 0 50 50"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-        >
-          <circle
-            class="text-blue-200"
-            cx="25"
-            cy="25"
-            r="20"
-            stroke="white"
-            stroke-width="6"
-          ></circle>
-          <circle
-            class="text-blue-600"
-            cx="25"
-            cy="25"
-            r="20"
-            stroke="gray"
-            stroke-width="6"
-            stroke-dasharray="125.6"
-            stroke-dashoffset="100"
-          ></circle>
-        </svg>
-        <span v-if="!loading">Extract</span>
-        <span v-else>Processing... </span>
-      </button>
-    </div>
-    <div v-if="response && response.data && response.data.length">
-      <div class="my-3 text-xl font-bold text-blue-600">{{ url }}</div>
-      <span class="font-medium"
-        >Total: {{ filteredItems.length }} /
-        {{ response.data.length }} links</span
-      >
-      <div class="flex justify-between">
-        <div class="flex">
-          <div v-for="filter in filters" :key="filter.name" class="mr-2">
-            <label class="inline-flex items-center hover:cursor-pointer">
-              <input
-                v-model="filter.checked"
-                type="checkbox"
-                class="w-4 h-4 accent-teal-600"
-              />
-              <span class="ml-2">{{ filter.name }}</span>
-            </label>
-          </div>
+        <div class="w-96">
+          <input
+            v-model="url"
+            name="url"
+            type="text"
+            placeholder="Enter a valid URL"
+            class="block w-full rounded-l-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+          />
+          <span v-if="errorMessage" class="error font-bold text-amber-700">{{
+            errorMessage
+          }}</span>
         </div>
 
-        <button
-          class="rounded bg-indigo-600 hover:bg-indigo-400 px-3 py-1 text-white font-medium flex items-center"
+        <base-button
+          class="flex rounded-r-md"
+          :disabled="!url || errorMessage || loading"
+          @click.prevent="grabLink"
         >
-          <icon name="carbon:document-download" class="mr-1" />
-          <span class="text-sm">Download in CSV</span>
-        </button>
+          <progress-circle-svg v-if="loading" />
+          <span v-if="!loading">Extract</span>
+          <span v-else>Processing... </span>
+        </base-button>
       </div>
-      <ul class="border rounded p-2 mt-4">
-        <li
-          v-for="(list, inx) of filteredItems"
-          :key="inx"
-          class="even:bg-gray-200 truncate p-1"
+      <div v-if="response && response.data && response.data.length">
+        <div class="my-3 text-xl font-bold text-blue-600">{{ url }}</div>
+        <span class="font-medium"
+          >Total: {{ filteredItems.length }} /
+          {{ response.data.length }} links</span
         >
-          <nuxt-link
-            :to="list.link"
-            class="text-sm hover:border-b-2 hover:border-dashed border-indigo-400"
-            target="_blank"
-            >{{ list.link }}</nuxt-link
+        <div class="flex justify-between">
+          <div class="flex">
+            <div v-for="filter in filters" :key="filter.name" class="mr-2">
+              <label class="inline-flex items-center hover:cursor-pointer">
+                <input
+                  v-model="filter.checked"
+                  type="checkbox"
+                  class="w-4 h-4 accent-teal-600"
+                />
+                <span class="ml-2">{{ filter.name }}</span>
+              </label>
+            </div>
+          </div>
+
+          <button
+            class="rounded bg-indigo-600 hover:bg-indigo-400 px-3 py-1 text-white font-medium flex items-center"
           >
-          <span
-            class="block text-sm text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300"
+            <icon name="carbon:document-download" class="mr-1" />
+            <span class="text-sm">Download in CSV</span>
+          </button>
+        </div>
+        <ul class="border rounded p-2 mt-4">
+          <li
+            v-for="(list, inx) of filteredItems"
+            :key="inx"
+            class="even:bg-gray-200 truncate p-1"
           >
-            Title: {{ list.title }}
-          </span>
-        </li>
-      </ul>
-    </div>
-    <div
-      v-if="error"
-      class="bg-orange-600 p-3 rounded-md font-medium text-white"
-    >
-      <span>{{ error }}</span>
+            <nuxt-link
+              :to="list.link"
+              class="text-sm hover:border-b-2 hover:border-dashed border-indigo-400"
+              target="_blank"
+              >{{ list.link }}</nuxt-link
+            >
+            <span
+              class="block text-sm text-indigo-800 dark:bg-indigo-900 dark:text-indigo-300"
+            >
+              Title: {{ list.title }}
+            </span>
+          </li>
+        </ul>
+      </div>
+      <base-alert v-if="error" type="error">
+        <span>{{ error }}</span>
+      </base-alert>
     </div>
   </div>
 </template>
