@@ -37,7 +37,7 @@ const getLinkClass = (path: string) => {
         <li v-for="link in links" :key="link.label" class="p-2 hover">
           <nuxt-link
             :to="link.to"
-            class="uppercase text-xs font-medium hover:text-purple-700"
+            class="uppercase text-xs font-semibold hover:text-purple-700"
             :class="getLinkClass(link.to)"
             >{{ link.label }}</nuxt-link
           >

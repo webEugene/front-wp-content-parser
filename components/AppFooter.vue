@@ -72,8 +72,8 @@ const companyList = ref([
 
 const getLinkClass = (path: string) => {
   return route.path === path
-    ? "text-blue-600" // Active link styles
-    : "text-gray-600 hover:text-gray-900"; // Inactive link styles
+    ? "font-semibold text-blue-600" // Active link styles
+    : "font-semibold text-gray-600 hover:text-gray-900"; // Inactive link styles
 };
 </script>
 
@@ -103,7 +103,7 @@ const getLinkClass = (path: string) => {
         </div>
         <!-- End Col -->
         <div class="lg:mx-auto text-left">
-          <h4 class="text-lg text-gray-900 font-medium mb-5">WP Parser</h4>
+          <h4 class="text-lg text-gray-900 font-semibold mb-5">WP Parser</h4>
           <ul class="text-sm transition-all duration-500">
             <li
               v-for="link in homepageList"
@@ -113,7 +113,7 @@ const getLinkClass = (path: string) => {
               <nuxt-link
                 :to="link.url"
                 :aria-label="link.label"
-                class="text-gray-600 hover:text-gray-900"
+                
                 :class="getLinkClass(link.url)"
                 >{{ link.title }}</nuxt-link
               >
@@ -122,7 +122,7 @@ const getLinkClass = (path: string) => {
         </div>
         <!-- End Col -->
         <div class="lg:mx-auto text-left">
-          <h4 class="text-lg text-gray-900 font-medium mb-7">FREE Products</h4>
+          <h4 class="text-lg text-gray-900 font-semibold mb-7">FREE Products</h4>
           <ul class="text-sm transition-all duration-500">
             <li
               v-for="link in freeProductsList"
@@ -140,7 +140,7 @@ const getLinkClass = (path: string) => {
         </div>
         <!-- End Col -->
         <div class="lg:mx-auto text-left">
-          <h4 class="text-lg text-gray-900 font-medium mb-7">Company</h4>
+          <h4 class="text-lg text-gray-900 font-semibold mb-7">Company</h4>
           <ul class="text-sm transition-all duration-500">
             <li
               v-for="link in companyList"

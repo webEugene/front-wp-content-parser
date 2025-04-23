@@ -12,6 +12,11 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@vee-validate/nuxt',
+    ['@nuxtjs/google-fonts', {
+      families: {
+        Onest: true,
+      },
+    }]
   ],
   css: ['~/assets/css/main.css'],
   eslint: {
