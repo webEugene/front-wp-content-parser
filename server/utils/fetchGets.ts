@@ -4,7 +4,7 @@ export const fetchGetsApi = () => {
   const { apiUrl } = useAppConfig();
 
   const getAllReports = async (): Promise<ReportType> => {
-    return await $fetch(`${apiUrl}api/v1/reports/all-reports`);
+    return await $fetch(`${apiUrl}reports/all-reports`);
   };
 
   return {

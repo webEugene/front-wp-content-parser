@@ -1,31 +1,31 @@
-import { z } from 'zod';
-import { fetchPostsApi } from '~/server/utils/fetchPosts';
+import { fetchPostsApi } from "~/server/utils/fetchPosts";
 import { urlSchema } from "~/server/schemas/urlSchema";
+import { wpDetectSchema } from "~/server/schemas/wpDetectSchema";
 
 export default defineEventHandler(async (event) => {
-	const wpDetectSchema = z.object({
-		data: z.object({
-			isWp: z.boolean(),
-			url: z.string(),
-		}),
-	});
-	const query = await getValidatedQuery(event, urlSchema.safeParse);
+  const query = await getValidatedQuery(event, urlSchema.safeParse);
 
-	if (!query.success) {
-		throw createError({ data: query.error.format() });
-	}
+  if (!query.success) {
+    throw createError({ data: query.error.format() });
+  }
 
-	const { getWpDetectCheck } = fetchPostsApi();
+  const { getWpDetectCheck } = fetchPostsApi();
 
-	const response = await getWpDetectCheck(query.data.url, event.node.req.headers.host);
+  const response = await getWpDetectCheck(
+    query.data.url,
+    event.node.req.headers.host,
+  );
 
-	const parsed = wpDetectSchema.safeParse(response);
+  if (response?.statusCode === 404) {
+    return response;
+  }
 
-	if (!parsed.success) {
-		throw createError({ data: parsed.error.format() });
-	}
+  const parsed = wpDetectSchema.safeParse(response);
+  if (!parsed.success) {
+    throw createError({ data: parsed.error.format() });
+  }
 
-	return {
-		...parsed.data
-	};
+  return {
+    ...parsed.data,
+  };
 });

@@ -45,7 +45,7 @@ const pageNameList = ref([
 const response = ref(null);
 const error = ref(null);
 const loading = ref(false);
-const tooManyCharacters = ref(true);
+
 const { handleSubmit, errors, resetForm } = useForm({
   validationSchema: reportSchema,
 });
@@ -93,13 +93,14 @@ const disabledButton = computed(() => {
   );
 });
 
-const getCharacterLength = (report: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-  [...report].length > 1000
-    ? (tooManyCharacters.value = false)
-    : (tooManyCharacters.value = true);
-  return report ? [...report].length : "0";
-};
+const tooManyCharacters = computed(() => {
+  const x = [...report.value].length;
+  return !(x > 10 && x < 1000);
+});
+
+const getCharacterLength = computed(() => {
+  return report.value ? [...report.value].length : "0";
+});
 </script>
 
 <template>
@@ -179,7 +180,7 @@ const getCharacterLength = (report: string) => {
               class="block text-sm/6 font-medium text-gray-900"
               >Message</label
             >
-            <span>{{ getCharacterLength(report) }} / 1000</span>
+            <span>{{ getCharacterLength }} / 1000</span>
           </div>
           <div class="mt-2">
             <textarea

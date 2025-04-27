@@ -1,9 +1,11 @@
 <template>
-  <app-header />
-  <main class="w-full">
-    <slot />
-  </main>
-  <app-footer />
+  <div>
+    <app-header />
+    <main class="w-full">
+      <slot />
+    </main>
+    <app-footer />
+  </div>
 </template>
 
 <script setup lang="ts">

@@ -6,8 +6,7 @@ const props = defineProps<{
 }>();
 
 const alertClasses = computed(() => {
-  const base =
-    "px-6 py-4 my-4 rounded-md text-lg flex items-center mx-auto max-w-lg";
+  const base = "px-6 py-4 my-4 rounded-md text-lg flex items-center mx-auto";
   const variants = {
     success: "bg-green-200",
     error: "bg-red-200",
@@ -43,8 +42,13 @@ const alertIconName = computed(() => {
 
 <template>
   <div :class="alertClasses">
-    <icon :name="alertIconName" size="1.3em" :class="alertTextColors" />
-    <span :class="alertTextColors"><slot /></span>
+    <icon
+      :name="alertIconName"
+      size="1.3em"
+      class="flex-none"
+      :class="alertTextColors"
+    />
+    <span class="px-3 text-base" :class="alertTextColors"><slot /></span>
   </div>
 </template>
 
