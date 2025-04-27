@@ -80,7 +80,7 @@ const copyToClipboard = async () => {
     </heading-page>
     <div class="wrapper mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <div
-        class="form-wp-check w-2/4 p-2 mx-auto flex justify-center"
+        class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center"
         :class="errorMessage ? 'items-baseline' : 'items-center'"
       >
         <div class="w-96">
@@ -89,7 +89,7 @@ const copyToClipboard = async () => {
             name="url"
             type="text"
             placeholder="Enter a valid URL"
-            class="block w-full rounded-l-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            class="block w-full rounded bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
           />
           <span v-if="errorMessage" class="error font-bold text-amber-700">{{
             errorMessage
@@ -97,7 +97,7 @@ const copyToClipboard = async () => {
         </div>
 
         <base-button
-          class="flex rounded-r-md"
+          class="flex rounded mt-3 min-w-40 justify-center"
           :disabled="!url || errorMessage || loading"
           @click.prevent="getSitemapUrl"
         >

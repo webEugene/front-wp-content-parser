@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-header />
-    <main class="w-full">
+    <main class="w-full pt-14">
       <slot />
     </main>
     <app-footer />

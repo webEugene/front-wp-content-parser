@@ -67,7 +67,7 @@ async function getSitemapUrl() {
     </heading-page>
     <div class="wrapper mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <div
-        class="form-wp-check w-2/4 p-2 mx-auto flex justify-center"
+        class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center"
         :class="errorMessage ? 'items-baseline' : 'items-center'"
       >
         <div class="w-96">
@@ -84,7 +84,7 @@ async function getSitemapUrl() {
         </div>
 
         <base-button
-          class="flex rounded-r-md"
+          class="flex rounded mt-3 min-w-40 justify-center"
           :disabled="!url || errorMessage || loading"
           @click.prevent="getSitemapUrl"
         >

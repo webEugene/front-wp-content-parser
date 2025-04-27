@@ -26,9 +26,9 @@ const getLinkClass = (path: string) => {
 </script>
 
 <template>
-  <header class="border-b border-gray-200 dark:border-gray-800">
+  <header class="fixed w-full z-20 shadow-md shadow-indigo-100 bg-white">
     <nav
-      class="container mx-auto max-w-screen-lg px-4 py-4 flex align-middle justify-between"
+      class="container mx-auto max-w-screen-lg px-4 py-2 flex align-middle justify-between"
     >
       <nuxt-link to="/" class="flex gap-1 items-center">
         <span class="text-1xl font-bold">WP-Scraper</span>
@@ -37,7 +37,7 @@ const getLinkClass = (path: string) => {
         <li v-for="link in links" :key="link.label" class="p-2 hover">
           <nuxt-link
             :to="link.to"
-            class="uppercase text-xs font-medium hover:text-purple-700"
+            class="uppercase text-xs font-medium hover:text-blue-600"
             :class="getLinkClass(link.to)"
             >{{ link.label }}</nuxt-link
           >

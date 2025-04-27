@@ -42,6 +42,10 @@ async function checkWpDetect() {
     loading.value = false;
   }
 }
+const disabledBtn = computed(() => {
+  return !url.value || !!errorMessage.value || loading.value;
+});
+
 </script>
 
 <template>
@@ -54,9 +58,10 @@ async function checkWpDetect() {
         </p>
       </template>
     </heading-page>
+    <div class="w-full h-10 bg-blue-50"></div>
     <div class="wrapper mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <div
-        class="form-wp-check w-2/4 p-2 mx-auto flex justify-center"
+        class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center"
         :class="errorMessage ? 'items-baseline' : 'items-center'"
       >
         <div class="w-96">
@@ -70,8 +75,8 @@ async function checkWpDetect() {
           }}</span>
         </div>
         <base-button
-          class="flex rounded-r-md"
-          :disabled="!url || errorMessage || loading"
+          class="flex rounded mt-3 min-w-40 justify-center"
+          :disabled="disabledBtn"
           @click.prevent="checkWpDetect"
         >
           <progress-circle-svg v-if="loading" />
