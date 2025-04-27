@@ -1,6 +1,8 @@
 <script setup lang="ts">
-const route = useRoute();
+import { ref } from "vue";
+import { useRoute } from "vue-router";
 
+const route = useRoute();
 const links = ref([
   { label: "WP Check", to: "/wp-check" },
   {
