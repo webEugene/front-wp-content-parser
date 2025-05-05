@@ -7,6 +7,13 @@ import { urlWithMessageSchema } from "~/schemas/urlSchema";
 import ProgressCircleSvg from "~/components/atoms/ProgressCircleSvg.vue";
 import BaseButton from "~/components/atoms/BaseButton.vue";
 import BaseAlert from "~/components/atoms/BaseAlert.vue";
+import BaseInput from "~/components/atoms/BaseInput.vue";
+
+useSeoMeta({
+  title: "Sitemap Test Tool | Instantly Check for Website Sitemaps",
+  description:
+    "Quickly test if a website has a sitemap. Fast, accurate, and free.",
+});
 
 const urlSchema = toTypedSchema(urlWithMessageSchema);
 const { value: url, errorMessage } = useField("url", urlSchema);
@@ -64,6 +71,10 @@ const copyToClipboard = async () => {
     console.error("Failed to copy text:", error);
   }
 };
+
+const disabledBtn = computed(() => {
+  return !url.value || !!errorMessage.value || loading.value;
+});
 </script>
 
 <template>
@@ -71,25 +82,19 @@ const copyToClipboard = async () => {
     <heading-page heading="Sitemap Test">
       <template #text>
         <p>
-          Check if the website has a sitemap. A sitemap is important as it lists
-          all the web pages of the site and let search engine crawlers to crawl
-          the website more intelligently. A sitemap also provides valuable
-          metadata for each webpage.
+          Sitemaps help search engines crawl and understand a site better. Our tool quickly detects sitemaps and shows what’s inside — including valuable page metadata.
         </p>
       </template>
     </heading-page>
     <div class="wrapper mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <div
-        class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center"
-        :class="errorMessage ? 'items-baseline' : 'items-center'"
+        class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center items-center"
       >
         <div class="w-96">
-          <input
-            v-model="url"
-            name="url"
-            type="text"
+          <base-input
+            v-model:input-value="url"
             placeholder="Enter a valid URL"
-            class="block w-full rounded bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            :error-message="!!errorMessage"
           />
           <span v-if="errorMessage" class="error font-bold text-amber-700">{{
             errorMessage
@@ -98,7 +103,7 @@ const copyToClipboard = async () => {
 
         <base-button
           class="flex rounded mt-3 min-w-40 justify-center"
-          :disabled="!url || errorMessage || loading"
+          :disabled="disabledBtn"
           @click.prevent="getSitemapUrl"
         >
           <progress-circle-svg v-if="loading" />

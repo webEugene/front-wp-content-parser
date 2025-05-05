@@ -9,6 +9,12 @@ import ProgressCircleSvg from "~/components/atoms/ProgressCircleSvg.vue";
 import BaseAlert from "~/components/atoms/BaseAlert.vue";
 import BaseInput from "~/components/atoms/BaseInput.vue";
 
+useSeoMeta({
+  title: "Link Grabber Tool | Extract All Links from Any Webpage",
+  description:
+    "Grab all links from an HTML page in seconds. Use our fast and simple tool to extract, view, and analyze every URL on a web page.",
+});
+
 interface ILinkData {
   link: string;
   title: string;
@@ -107,15 +113,14 @@ const disabledBtn = computed(() => {
     <heading-page heading="Link Grabber">
       <template #text>
         <p>
-          Our grabber service helps to extract links from an HTML page and
-          displays them in convenient view for you.
+          Our Link Grabber tool scans the HTML and displays all found URLs in a
+          clean, easy-to-use format — perfect for SEO, research, and analysis.
         </p>
       </template>
     </heading-page>
     <div class="wrapper mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <div
-        class="form-wp-check sm:w-full w-2/4 p-2 mx-auto flex flex-col justify-center"
-        :class="errorMessage ? 'items-baseline' : 'items-center'"
+        class="form-wp-check sm:w-full w-2/4 p-2 mx-auto flex flex-col justify-center items-center"
       >
         <div class="w-96">
           <base-input
