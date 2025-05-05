@@ -7,6 +7,13 @@ import { urlWithMessageSchema } from "~/schemas/urlSchema";
 import BaseButton from "~/components/atoms/BaseButton.vue";
 import ProgressCircleSvg from "~/components/atoms/ProgressCircleSvg.vue";
 import BaseAlert from "~/components/atoms/BaseAlert.vue";
+import BaseInput from "~/components/atoms/BaseInput.vue";
+
+useSeoMeta({
+  title: "Link Grabber Tool | Extract All Links from Any Webpage",
+  description:
+    "Grab all links from an HTML page in seconds. Use our fast and simple tool to extract, view, and analyze every URL on a web page.",
+});
 
 interface ILinkData {
   link: string;
@@ -90,6 +97,10 @@ const filteredItems = computed(() => {
   });
 });
 
+const disabledBtn = computed(() => {
+  return !url.value || !!errorMessage.value || loading.value;
+});
+
 // TODO:
 // - Link grabber page:
 // -- return empty result if url not exists and stop continues loading;
@@ -101,21 +112,21 @@ const filteredItems = computed(() => {
   <div>
     <heading-page heading="Link Grabber">
       <template #text>
-        <p>bla</p>
+        <p>
+          Our Link Grabber tool scans the HTML and displays all found URLs in a
+          clean, easy-to-use format — perfect for SEO, research, and analysis.
+        </p>
       </template>
     </heading-page>
     <div class="wrapper mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
       <div
-        class="form-wp-check w-2/4 p-2 mx-auto flex justify-center"
-        :class="errorMessage ? 'items-baseline' : 'items-center'"
+        class="form-wp-check sm:w-full w-2/4 p-2 mx-auto flex flex-col justify-center items-center"
       >
         <div class="w-96">
-          <input
-            v-model="url"
-            name="url"
-            type="text"
+          <base-input
+            v-model:input-value="url"
             placeholder="Enter a valid URL"
-            class="block w-full rounded-l-md bg-white px-3 py-1.5 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+            :error-message="!!errorMessage"
           />
           <span v-if="errorMessage" class="error font-bold text-amber-700">{{
             errorMessage
@@ -123,8 +134,8 @@ const filteredItems = computed(() => {
         </div>
 
         <base-button
-          class="flex rounded-r-md"
-          :disabled="!url || errorMessage || loading"
+          class="flex rounded mt-3 min-w-40 justify-center"
+          :disabled="disabledBtn"
           @click.prevent="grabLink"
         >
           <progress-circle-svg v-if="loading" />
@@ -161,8 +172,8 @@ const filteredItems = computed(() => {
         </div>
         <ul class="border rounded p-2 mt-4">
           <li
-            v-for="(list, inx) of filteredItems"
-            :key="inx"
+            v-for="(list, idx) of filteredItems"
+            :key="idx"
             class="even:bg-gray-200 truncate p-1"
           >
             <nuxt-link

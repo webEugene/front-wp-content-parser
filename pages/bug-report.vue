@@ -11,8 +11,8 @@ const reportSchema = toTypedSchema(
     pageName: z.string().min(1, "Page name is required"),
     report: z
       .string()
-      .min(10, "Report must be at least 10 characters")
-      .max(1000, "Report exceeded limit"),
+      .min(10, "Message must be at least 10 characters")
+      .max(1000, "Message exceeded limit"),
     email: z.string().email("Invalid email").optional(),
   }),
 );
@@ -50,7 +50,7 @@ const { handleSubmit, errors, resetForm } = useForm({
   validationSchema: reportSchema,
 });
 const { value: pageName } = useField("pageName", undefined, {
-  initialValue: pageNameList.value[0]?.label, // Встановлення першого значення списку
+  initialValue: pageNameList.value[0]?.label,
 });
 const { value: email } = useField("email");
 const { value: report } = useField("report");
@@ -112,7 +112,7 @@ const getCharacterLength = computed(() => {
       <h2
         class="my-5 text-center text-2xl/9 font-bold tracking-tight text-gray-900"
       >
-        Hello, this is error report page
+        Hello, this is bug report page!
       </h2>
       <span class="mt-2"
         >Please, describe error that you faced with, and we try to fix it as

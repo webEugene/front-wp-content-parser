@@ -5,9 +5,9 @@ defineProps<{
 </script>
 
 <template>
-  <div class="p-5 bg-amber-100">
+  <div class="px-5 py-10 bg-blue-50">
     <div class="mx-auto max-w-5xl text-center">
-      <h1 class="mb-3 text-3xl font-bold tracking-tight text-gray-900">
+      <h1 class="mb-3 text-3xl font-bold tracking-tight text-indigo-950">
         {{ heading }}
       </h1>
       <slot name="text" />

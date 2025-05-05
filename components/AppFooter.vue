@@ -8,6 +8,11 @@ const homepageList = ref([
     url: "#",
   },
   {
+    title: "Features",
+    label: "Features",
+    url: "#",
+  },
+  {
     title: "About",
     label: "About",
     url: "#",
@@ -15,11 +20,6 @@ const homepageList = ref([
   {
     title: "Pricing",
     label: "Pricing",
-    url: "#",
-  },
-  {
-    title: "Feature",
-    label: "Feature",
     url: "#",
   },
 ]);
@@ -41,9 +41,9 @@ const freeProductsList = ref([
     url: "/sitemap-extractor",
   },
   {
-    title: "Link-grabber",
-    label: "Link-grabber",
-    url: "/link-grabber",
+    title: "Links grabber",
+    label: "Links grabber",
+    url: "/links-grabber",
   },
 ]);
 
@@ -61,7 +61,7 @@ const companyList = ref([
   {
     title: "Bug Report",
     label: "Report",
-    url: "/error-report",
+    url: "/bug-report",
   },
   {
     title: "Documentation",
@@ -78,21 +78,27 @@ const getLinkClass = (path: string) => {
 </script>
 
 <template>
-  <footer class="w-full">
+  <footer class="w-full bg-blue-50">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <!-- Grid -->
       <div
         class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-8 py-10 max-sm:max-w-sm max-sm:mx-auto gap-y-8"
       >
         <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0">
-          <a href="#" class="flex justify-center lg:justify-start">
-            WP Parser
-          </a>
+          <nuxt-link to="/" class="flex justify-center lg:justify-start">
+            <img
+              class="w-16"
+              loading="lazy"
+              src="~/assets/img/logo.png"
+              alt="WP Content Scraper"
+            />
+          </nuxt-link>
           <p
             class="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left"
           >
-            Trusted in more than 100 countries & 5 million customers. Have any
-            query ?
+            You can contact via email for your issues related with WEBSITE. You
+            can give feedback about current tools or suggest new tools that you
+            want to see on WEBSITE.
           </p>
           <nuxt-link
             to="/"
@@ -122,7 +128,7 @@ const getLinkClass = (path: string) => {
         </div>
         <!-- End Col -->
         <div class="lg:mx-auto text-left">
-          <h4 class="text-lg text-gray-900 font-medium mb-7">FREE Products</h4>
+          <h4 class="text-lg text-gray-900 font-medium mb-7">FREE Tools</h4>
           <ul class="text-sm transition-all duration-500">
             <li
               v-for="link in freeProductsList"
