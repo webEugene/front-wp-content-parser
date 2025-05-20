@@ -16,10 +16,17 @@ export default defineNuxtConfig({
         },
       },
     ],
+    "@nuxtjs/seo",
   ],
   devtools: { enabled: true },
   app: {
-    baseURL: "/", // Ensure this is correctly set
+    baseURL: "/",
+    head: {
+      title: "WP Content Parser",
+      htmlAttrs: {
+        lang: "en",
+      },
+    },
   },
   css: ["~/assets/css/main.css"],
   compatibilityDate: "2024-11-01",
@@ -32,5 +39,8 @@ export default defineNuxtConfig({
         // ...
       },
     },
+  },
+  image: {
+    dir: "assets/images",
   },
 });

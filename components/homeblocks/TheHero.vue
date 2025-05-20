@@ -5,7 +5,7 @@ import BaseButton from "~/components/atoms/BaseButton.vue";
 <template>
   <div class="dark:bg-gray-800 bg-blue-50 w-full">
     <section
-      class="dark:bg-gray-800 bg-blue-50 px-4 py-20 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3"
+      class="px-4 py-20 max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-3"
     >
       <div
         class="order-2 md:order-1 max-w-[631px] flex flex-col items-center text-center md:text-left md:items-start gap-9"
@@ -24,13 +24,13 @@ import BaseButton from "~/components/atoms/BaseButton.vue";
         <base-button
           class="px-5 py-3 md:px-7 md:py-4 lg:px-9 lg:py-5 rounded text-base md:text-lg lg:text-xl"
         >
-          Explore free tools
+          Explore WP content parser
         </base-button>
       </div>
       <img
         class="w-80 order-1 md:order-2"
         loading="lazy"
-        src="~/assets/img/hero_1.png"
+        src="~/assets/images/hero_1.png"
         alt=""
       />
     </section>

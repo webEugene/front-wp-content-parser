@@ -6,8 +6,8 @@ const route = useRoute();
 const links = ref([
   { label: "WP Check", to: "/wp-check" },
   {
-    label: "Sitemap test",
-    to: "/sitemap-test",
+    label: "Sitemap find",
+    to: "/sitemap-find",
   },
   {
     label: "Sitemap Extractor",
@@ -34,10 +34,10 @@ const getLinkClass = (path: string) => {
       class="container mx-auto max-w-7xl px-4 py-2 flex align-middle justify-between"
     >
       <nuxt-link to="/" class="flex gap-1 items-center">
-        <img
+        <nuxt-img
           class="w-16"
           loading="lazy"
-          src="~/assets/img/logo.png"
+          src="/logo.png"
           alt="WP Content Scraper"
         />
       </nuxt-link>
@@ -53,7 +53,7 @@ const getLinkClass = (path: string) => {
       </ul>
       <div class="header-controls flex items-center">
         <nuxt-link to="#">
-          <img src="~/assets/img/kofi.png" class="w-8" alt="" />
+          <nuxt-img src="/kofi.png" class="w-8" alt="" />
         </nuxt-link>
         <!--        <Icon name="carbon:awake" /> -->
         <!--        <Icon name="carbon:asleep" /> -->

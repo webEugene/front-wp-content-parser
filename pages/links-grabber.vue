@@ -144,7 +144,7 @@ const disabledBtn = computed(() => {
         </base-button>
       </div>
       <div v-if="response && response.data && response.data.length">
-        <div class="my-3 text-xl font-bold text-blue-600">{{ url }}</div>
+        <div class="my-3 text-xl font-bold text-blue-600">{{ response.domain }}</div>
         <span class="font-medium"
           >Total: {{ filteredItems.length }} /
           {{ response.data.length }} links</span

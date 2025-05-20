@@ -13,10 +13,10 @@
             rel="noopener noreferrer nofollow"
           >
             <div class="font-semibold text-xl mr-4">Want to support?</div>
-            <img
+            <nuxt-img
               class="w-72"
               loading="lazy"
-              src="~/assets/img/support_me_on_kofi_blue.png"
+              src="/support_me_on_kofi_blue.png"
               alt="Buy me a coffee"
           /></nuxt-link>
         </div>

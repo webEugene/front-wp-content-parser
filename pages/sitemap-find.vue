@@ -8,9 +8,10 @@ import ProgressCircleSvg from "~/components/atoms/ProgressCircleSvg.vue";
 import BaseButton from "~/components/atoms/BaseButton.vue";
 import BaseAlert from "~/components/atoms/BaseAlert.vue";
 import BaseInput from "~/components/atoms/BaseInput.vue";
+import ContentWrapper from "~/components/atoms/ContentWrapper.vue";
 
 useSeoMeta({
-  title: "Sitemap Test Tool | Instantly Check for Website Sitemaps",
+  title: "Sitemap Find Tool | Instantly Check for Website Sitemaps",
   description:
     "Quickly test if a website has a sitemap. Fast, accurate, and free.",
 });
@@ -50,10 +51,10 @@ async function getSitemapUrl() {
   }
 }
 
-const copyToClipboard = async () => {
+const copyToClipboard = async (sitemap) => {
   try {
     // Access the element's text content
-    const text = response.value.data;
+    const text = sitemap;
 
     if (!text) throw new Error("No text to copy");
 
@@ -79,10 +80,12 @@ const disabledBtn = computed(() => {
 
 <template>
   <div>
-    <heading-page heading="Sitemap Test">
+    <heading-page heading="Sitemap Find">
       <template #text>
         <p>
-          Sitemaps help search engines crawl and understand a site better. Our tool quickly detects sitemaps and shows what’s inside — including valuable page metadata.
+          Sitemaps help search engines crawl and understand a site better. Our
+          tool quickly detects sitemaps and shows what’s inside — including
+          valuable page metadata.
         </p>
       </template>
     </heading-page>
@@ -107,7 +110,7 @@ const disabledBtn = computed(() => {
           @click.prevent="getSitemapUrl"
         >
           <progress-circle-svg v-if="loading" />
-          <span v-if="!loading">Checkup</span>
+          <span v-if="!loading">Find</span>
           <span v-else>Processing... </span>
         </base-button>
       </div>
@@ -122,18 +125,22 @@ const disabledBtn = computed(() => {
             name="ooui:success"
             class="mr-2"
           />
-          <span class="font-medium">Sitemap test</span>
+          <span class="font-medium">Sitemap found</span>
         </div>
         <div class="ml-1 flex flex-col relative">
           <span class="text-xs">This website has a sitemap file:</span>
-          <div class="flex items-center">
+          <div
+            v-for="(sitemap, index) in response.data"
+            :key="index"
+            class="flex items-center"
+          >
             <nuxt-link
-              :to="response.data"
+              :to="sitemap"
               target="_blank"
               class="font-medium text-purple-700 border-b border-purple-700 border-dashed"
-              >{{ response.data }}</nuxt-link
+              >{{ sitemap }}</nuxt-link
             >
-            <button @click="copyToClipboard">
+            <button @click="copyToClipboard(sitemap)">
               <icon
                 size="1.2em"
                 name="material-symbols:content-copy-outline"
@@ -153,5 +160,15 @@ const disabledBtn = computed(() => {
         <span>{{ error }}</span>
       </base-alert>
     </div>
+    <content-wrapper>
+      <h2 class="text-center mb-2 text-2xl font-semibold">
+        How to use Sitemap Find
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet
+        dolorem earum itaque iure laborum minima veritatis voluptatum. Facilis,
+        vero?
+      </p>
+    </content-wrapper>
   </div>
 </template>

@@ -8,6 +8,7 @@ import BaseButton from "~/components/atoms/BaseButton.vue";
 import BaseAlert from "~/components/atoms/BaseAlert.vue";
 import ProgressCircleSvg from "~/components/atoms/ProgressCircleSvg.vue";
 import BaseInput from "~/components/atoms/BaseInput.vue";
+import ContentWrapper from "~/components/atoms/ContentWrapper.vue";
 
 useSeoMeta({
   title: "Is It WordPress? | Quick & Easy WordPress Website Checker",
@@ -83,7 +84,7 @@ const disabledBtn = computed(() => {
           @click.prevent="checkWpDetect"
         >
           <progress-circle-svg v-if="loading" />
-          <span v-if="!loading">Checkup</span>
+          <span v-if="!loading">Check</span>
           <span v-else>Processing... </span>
         </base-button>
       </div>
@@ -104,5 +105,15 @@ const disabledBtn = computed(() => {
         <span>{{ error }}</span>
       </base-alert>
     </div>
+    <content-wrapper>
+      <h2 class="text-center mb-2 text-2xl font-semibold">
+        How to use Wp Check
+      </h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet
+        dolorem earum itaque iure laborum minima veritatis voluptatum. Facilis,
+        vero?
+      </p>
+    </content-wrapper>
   </div>
 </template>
