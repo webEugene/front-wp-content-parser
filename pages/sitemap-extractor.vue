@@ -118,6 +118,9 @@ const disabledBtn = computed(() => {
       </base-alert>
     </div>
     <content-wrapper>
+      <h2 class="text-center mb-2 text-2xl font-semibold">
+        How to use Sitemap Extractor
+      </h2>
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium
         amet animi consequuntur cupiditate ea eius error, expedita illum ipsam
@@ -129,22 +132,7 @@ const disabledBtn = computed(() => {
         fugit libero maxime nostrum, odit qui rem? A accusantium adipisci animi
         asperiores aut beatae consequuntur, culpa cumque deleniti doloribus
         ipsam iste itaque iure laboriosam laborum magni minus odit officiis
-        omnis pariatur quo ratione reiciendis sed similique totam. Accusantium
-        architecto, incidunt ipsum laudantium maiores quae sunt unde voluptatum?
-        Adipisci debitis deserunt, fugit libero nobis omnis reiciendis similique
-        temporibus vel vero. Ab aperiam at corporis esse fuga magnam non nulla
-        obcaecati totam ullam. Amet consequatur cupiditate error laborum
-        molestiae, quasi quibusdam quos sit voluptatem? Ad architecto eveniet
-        explicabo natus voluptas. Accusantium aut commodi consequatur cupiditate
-        esse eum exercitationem explicabo ipsum laborum nam non nulla
-        praesentium, suscipit? Asperiores cum minus porro. Odio quasi quibusdam
-        repudiandae sapiente? Dolor dolores expedita, explicabo ipsam laboriosam
-        maiores nisi obcaecati pariatur placeat, possimus praesentium provident
-        quaerat quidem quo ratione recusandae reiciendis rem repellendus sed
-        ullam ut, vel voluptatem! Accusamus aliquam aperiam aspernatur atque,
-        consectetur consequatur corporis debitis doloribus ea eligendi explicabo
-        impedit nisi non nulla obcaecati perferendis praesentium quod rerum sit
-        tempora.
+        omnis pariatur quo ratione reiciendis sed similique totam.
       </p>
     </content-wrapper>
   </div>

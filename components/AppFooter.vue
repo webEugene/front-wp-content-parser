@@ -31,9 +31,9 @@ const freeProductsList = ref([
     url: "/wp-check",
   },
   {
-    title: "Sitemap test",
-    label: "Sitemap test",
-    url: "/sitemap-test",
+    title: "Sitemap find",
+    label: "Sitemap find",
+    url: "/sitemap-find",
   },
   {
     title: "Sitemap extractor",
@@ -86,10 +86,10 @@ const getLinkClass = (path: string) => {
       >
         <div class="col-span-full mb-10 lg:col-span-2 lg:mb-0">
           <nuxt-link to="/" class="flex justify-center lg:justify-start">
-            <img
+            <nuxt-img
               class="w-16"
               loading="lazy"
-              src="~/assets/img/logo.png"
+              src="/logo.png"
               alt="WP Content Scraper"
             />
           </nuxt-link>

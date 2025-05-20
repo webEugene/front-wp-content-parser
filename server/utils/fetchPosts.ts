@@ -11,7 +11,7 @@ export const fetchPostsApi = () => {
     });
   };
 
-  const getSitemapDetectCheck = async (
+  const getSitemapFind = async (
     url: string,
     host: string | undefined,
   ) => {
@@ -67,7 +67,7 @@ export const fetchPostsApi = () => {
 
   return {
     getWpDetectCheck,
-    getSitemapDetectCheck,
+    getSitemapFind,
     getExtractedSitemapList,
     getGrabbedLinks,
     createReport,

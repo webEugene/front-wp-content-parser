@@ -1,5 +1,5 @@
 {
-  "name": "nuxt-app",
+  "name": "wp-content-parser",
   "private": true,
   "type": "module",
   "scripts": {
@@ -15,6 +15,7 @@
     "@nuxt/icon": "^1.10.3",
     "@nuxt/image": "^1.8.1",
     "@nuxtjs/google-fonts": "^3.2.0",
+    "@nuxtjs/seo": "^3.0.3",
     "@nuxtjs/tailwindcss": "^6.12.2",
     "@vee-validate/nuxt": "^4.15.0",
     "@vee-validate/rules": "^4.15.0",
