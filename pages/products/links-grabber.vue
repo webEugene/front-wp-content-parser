@@ -2,12 +2,7 @@
 import { ref } from "vue";
 import { useField } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
-import HeadingPage from "~/components/molecules/HeadingPage.vue";
 import { urlWithMessageSchema } from "~/schemas/urlSchema";
-import BaseButton from "~/components/atoms/BaseButton.vue";
-import ProgressCircleSvg from "~/components/atoms/ProgressCircleSvg.vue";
-import BaseAlert from "~/components/atoms/BaseAlert.vue";
-import BaseInput from "~/components/atoms/BaseInput.vue";
 
 useSeoMeta({
   title: "Link Grabber Tool | Extract All Links from Any Webpage",
@@ -144,7 +139,9 @@ const disabledBtn = computed(() => {
         </base-button>
       </div>
       <div v-if="response && response.data && response.data.length">
-        <div class="my-3 text-xl font-bold text-blue-600">{{ response.domain }}</div>
+        <div class="my-3 text-xl font-bold text-blue-600">
+          {{ response.domain }}
+        </div>
         <span class="font-medium"
           >Total: {{ filteredItems.length }} /
           {{ response.data.length }} links</span

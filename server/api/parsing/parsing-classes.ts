@@ -1,30 +1,32 @@
-import { z } from "zod";
 import { fetchPostsApi } from "~/server/utils/fetchPosts";
 import { urlSchema } from "~/server/schemas/urlSchema";
+import { parseClassesSchema } from "~/server/schemas/parseClassesSchema";
 
 export default defineEventHandler(async (event) => {
-  const extractedSitemapListSchema = z.object({
-    data: z.array(z.string()),
-  });
   const query = await getValidatedQuery(event, urlSchema.safeParse);
 
   if (!query.success) {
     throw createError({ data: query.error.format() });
   }
 
-  const { getExtractedSitemapList } = fetchPostsApi();
+  const { getWpClasses } = fetchPostsApi();
 
-  const response = await getExtractedSitemapList(
+  const response = await getWpClasses(
     query.data.url,
     event.node.req.headers.host,
   );
 
-  const parsed = extractedSitemapListSchema.safeParse(response);
+  const parsed = parseClassesSchema.safeParse(response);
+
   if (!parsed.success) {
     throw createError({ data: parsed.error.format() });
   }
-
-  return {
-    ...parsed.data,
+  const formatted = () => {
+    return {
+      site: parsed.data.site,
+      pages: parsed.data.pages?.join(", "),
+    };
   };
+
+  return formatted();
 });

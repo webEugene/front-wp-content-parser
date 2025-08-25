@@ -2,7 +2,7 @@
 definePageMeta({
   layout: 'admin-template'
 })
-const { data, error } = await useFetch('/api/analytics/sitemap-test');
+const { data, error } = await useFetch("/api/analytics/sitemap-test");
 </script>
 
 <template>

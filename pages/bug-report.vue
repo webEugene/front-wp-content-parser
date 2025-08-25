@@ -3,8 +3,6 @@ import { toTypedSchema } from "@vee-validate/zod";
 import { z } from "zod";
 import { useField } from "vee-validate";
 import { ref } from "vue";
-import BaseButton from "~/components/atoms/BaseButton.vue";
-import BaseAlert from "~/components/atoms/BaseAlert.vue";
 // Define Zod schema
 const reportSchema = toTypedSchema(
   z.object({
