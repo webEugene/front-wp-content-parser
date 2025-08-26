@@ -11,10 +11,7 @@ export const fetchPostsApi = () => {
     });
   };
 
-  const getSitemapFind = async (
-    url: string,
-    host: string | undefined,
-  ) => {
+  const getSitemapFind = async (url: string, host: string | undefined) => {
     return await $fetch(`${apiUrl}urls/sitemap-check`, {
       method: "POST",
       body: {
@@ -53,6 +50,20 @@ export const fetchPostsApi = () => {
     report: string;
   }
 
+  interface IParsingContentData {
+    url: string;
+    homeTitle?: string;
+    homeContent?: string;
+    pageTitle?: string;
+    pageContent?: string;
+    singleTitle?: string;
+    singleContent?: string;
+    archiveTitle?: string;
+    archiveContent?: string;
+    defaultTitle?: string;
+    defaultContent?: string;
+  }
+
   const createReport = async (data: ICreateReport) => {
     const { pageName, email, report } = data;
     return await $fetch(`${apiUrl}reports/create-report`, {
@@ -65,11 +76,33 @@ export const fetchPostsApi = () => {
     });
   };
 
+  const parseContent = async (
+    data: IParsingContentData,
+    host: string | undefined,
+  ) => {
+    return await $fetch(`${apiUrl}parse/content`, {
+      method: "POST",
+      body: { ...data, host },
+    });
+  };
+
+  const getWpClasses = async (url: string, host: string | undefined) => {
+    return await $fetch(`${apiUrl}parse/classes`, {
+      method: "POST",
+      body: {
+        url,
+        host,
+      },
+    });
+  };
+
   return {
     getWpDetectCheck,
     getSitemapFind,
     getExtractedSitemapList,
     getGrabbedLinks,
     createReport,
+    parseContent,
+    getWpClasses,
   };
 };

@@ -18,6 +18,14 @@ export default defineNuxtConfig({
     ],
     "@nuxtjs/seo",
   ],
+  components: {
+    dirs: [
+      "~/components/atoms",
+      "~/components/homeBlocks",
+      "~/components/molecules",
+      "~/components",
+    ],
+  },
   devtools: { enabled: true },
   app: {
     baseURL: "/",

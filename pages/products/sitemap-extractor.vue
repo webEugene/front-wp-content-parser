@@ -2,13 +2,7 @@
 import { ref } from "vue";
 import { useField } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
-import HeadingPage from "~/components/molecules/HeadingPage.vue";
 import { urlWithMessageSchema } from "~/schemas/urlSchema";
-import ContentWrapper from "~/components/atoms/ContentWrapper.vue";
-import ProgressCircleSvg from "~/components/atoms/ProgressCircleSvg.vue";
-import BaseButton from "~/components/atoms/BaseButton.vue";
-import BaseAlert from "~/components/atoms/BaseAlert.vue";
-import BaseInput from "~/components/atoms/BaseInput.vue";
 
 useSeoMeta({
   title: "Free Sitemap Extractor – Get All Links from Any Sitemap Instantly",

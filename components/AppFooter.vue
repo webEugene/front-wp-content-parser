@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import CookiePopup from "~/components/molecules/CookiePopup.vue";
+
 const route = useRoute();
 
 const homepageList = ref([
@@ -28,35 +30,35 @@ const freeProductsList = ref([
   {
     title: "Wp Check",
     label: "Wp Check",
-    url: "/wp-check",
+    url: "/products/wp-check",
   },
   {
     title: "Sitemap find",
     label: "Sitemap find",
-    url: "/sitemap-find",
+    url: "/products/sitemap-find",
   },
   {
     title: "Sitemap extractor",
     label: "Sitemap extractor",
-    url: "/sitemap-extractor",
+    url: "/products/sitemap-extractor",
   },
   {
     title: "Links grabber",
     label: "Links grabber",
-    url: "/links-grabber",
+    url: "/products/links-grabber",
   },
 ]);
 
 const companyList = ref([
   {
-    title: "Terms of Services",
-    label: "Terms of Services",
-    url: "#",
+    title: "Terms of Service",
+    label: "Terms of Service",
+    url: "/static/terms-of-service",
   },
   {
-    title: "Privacy Policy",
-    label: "Privacy Policy",
-    url: "#",
+    title: "Privacy/Cookie Policy",
+    label: "Privacy/Cookie Policy",
+    url: "/static/privacy-and-cookie-policy",
   },
   {
     title: "Bug Report",
@@ -170,8 +172,9 @@ const getLinkClass = (path: string) => {
           class="flex items-center justify-center flex-col lg:justify-between lg:flex-row"
         >
           <span class="text-sm text-gray-500"
-            ><nuxt-link to="/">Wp Parser</nuxt-link> ©
-            {{ new Date().getFullYear() }}, All rights reserved.</span
+            ><nuxt-link to="/">Copyright</nuxt-link> ©
+            {{ new Date().getFullYear() }} WP Content Parser. All rights
+            reserved.</span
           >
           <div class="flex mt-4 space-x-4 sm:justify-center lg:mt-0">
             <nuxt-link
@@ -228,6 +231,7 @@ const getLinkClass = (path: string) => {
         </div>
       </div>
     </div>
+    <cookie-popup />
   </footer>
 </template>
 

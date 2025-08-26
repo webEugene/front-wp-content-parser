@@ -1,28 +1,34 @@
 <script setup lang="ts">
 const featureList = ref([
   {
-    src: "/wp-check.png",
+    src: "wp-check.png",
     title: "WP Check",
-    text: " Optimized for performance with load times under 2 seconds, ensuring your users never wait.",
-    url: "/wp-check",
+    text: "Easy check if website is created on Wordpress. Just enter url and click to get the answer.",
+    url: "/products/wp-check",
   },
   {
     src: "sitemap-find.png",
     title: "Sitemap find",
-    text: "Enterprise-grade security with end-to-end encryption and regular penetration testing.",
-    url: "/sitemap-find",
+    text: "Sitemap Find tool quickly detects sitemaps and shows what’s inside.",
+    url: "/products/sitemap-find",
   },
   {
     src: "sitemap-extractor.png",
     title: "Sitemap extractor",
-    text: "Designed for humans with thoughtful UX patterns that reduce learning curves.",
-    url: "/sitemap-extractor",
+    text: "Sitemap Extractor parses all links from sitemap and give you a list of links for easy usage.",
+    url: "/products/sitemap-extractor",
   },
   {
     src: "links-grabber.png",
     title: "Links grabber",
-    text: "Our award-winning support team is available around the clock to assist you.",
-    url: "/links-grabber",
+    text: "Our Link Grabber tool scans the HTML and displays all found URLs in a clean, easy-to-use format — perfect for SEO, research, and analysis.",
+    url: "/products/links-grabber",
+  },
+  {
+    src: "parse-classes.png",
+    title: "Parse Classes",
+    text: "Easy get Wordpress main classes. Just enter url and click to get them.",
+    url: "/products/parse-classes",
   },
 ]);
 </script>

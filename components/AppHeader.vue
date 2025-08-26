@@ -4,18 +4,19 @@ import { useRoute } from "vue-router";
 
 const route = useRoute();
 const links = ref([
-  { label: "WP Check", to: "/wp-check" },
+  { label: "Parse classes", to: "/products/parse-classes" },
+  { label: "WP Check", to: "/products/wp-check" },
   {
     label: "Sitemap find",
-    to: "/sitemap-find",
+    to: "/products/sitemap-find",
   },
   {
     label: "Sitemap Extractor",
-    to: "/sitemap-extractor",
+    to: "/products/sitemap-extractor",
   },
   {
     label: "Links grabber",
-    to: "/links-grabber",
+    to: "/products/links-grabber",
   },
 ]);
 

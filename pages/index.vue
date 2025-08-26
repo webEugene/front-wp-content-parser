@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import TheHero from "~/components/homeblocks/TheHero.vue";
-import TheFeatures from "~/components/homeblocks/TheFeatures.vue";
-import AboutUs from "~/components/homeblocks/AboutUs.vue";
-
 useSeoMeta({
   title: "Homepage",
   description: "",
