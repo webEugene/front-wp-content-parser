@@ -9,3 +9,9 @@ export type ReportType = {
 export type ReportItemsType = {
   items: ReportType[];
 };
+
+export type CreateReportType = {
+  pageName: string;
+  email?: string | null;
+  report: string;
+}

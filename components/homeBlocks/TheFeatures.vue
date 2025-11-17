@@ -24,12 +24,12 @@ const featureList = ref([
     text: "Our Link Grabber tool scans the HTML and displays all found URLs in a clean, easy-to-use format — perfect for SEO, research, and analysis.",
     url: "/products/links-grabber",
   },
-  {
-    src: "parse-classes.png",
-    title: "Parse Classes",
-    text: "Easy get Wordpress main classes. Just enter url and click to get them.",
-    url: "/products/parse-classes",
-  },
+  // {
+  //   src: "parse-classes.png",
+  //   title: "Parse Classes",
+  //   text: "Easy get Wordpress main classes. Just enter url and click to get them.",
+  //   url: "/products/parse-classes",
+  // },
 ]);
 </script>
 

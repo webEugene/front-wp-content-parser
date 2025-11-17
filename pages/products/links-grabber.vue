@@ -3,7 +3,8 @@ import { ref } from "vue";
 import { useField } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
 import { urlWithMessageSchema } from "~/schemas/urlSchema";
-
+// https://chromewebstore.google.com/detail/link-grabber/caodelkhipncidmoebgbbeemedohcdma
+// Function to get the class for a link
 useSeoMeta({
   title: "Link Grabber Tool | Extract All Links from Any Webpage",
   description:
@@ -39,7 +40,7 @@ async function grabLink() {
       "/api/extract/grab-links",
       {
         params: { url: url.value },
-      },
+      }
     );
 
     if (fetchError.value) {

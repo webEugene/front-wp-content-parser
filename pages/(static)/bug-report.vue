@@ -12,7 +12,7 @@ const reportSchema = toTypedSchema(
       .min(10, "Message must be at least 10 characters")
       .max(1000, "Message exceeded limit"),
     email: z.string().email("Invalid email").optional(),
-  }),
+  })
 );
 const pageNameList = ref([
   {
@@ -64,7 +64,7 @@ const onSubmit = handleSubmit(async (values) => {
           email: values.email,
           report: values.report,
         },
-      },
+      }
     );
 
     if (fetchError.value) {

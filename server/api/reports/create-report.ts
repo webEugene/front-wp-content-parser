@@ -9,9 +9,11 @@ export default defineEventHandler(async (event) => {
   const { createReport } = fetchPostsApi();
 
   const response = await createReport(query.data);
+  console.log(response.statusCode);
 
-  if (!response) {
-    throw createError({ statusCode: 404 });
-  }
+  // if (!response) {
+  //   throw createError({ statusCode: 404 });
+  // }
+
   return response;
 });
