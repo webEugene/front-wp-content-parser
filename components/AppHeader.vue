@@ -38,7 +38,7 @@ const getLinkClass = (path: string) => {
         <nuxt-img
           class="w-16"
           loading="lazy"
-          src="/logo.png"
+          src="logo.png"
           alt="WP Content Scraper"
         />
       </nuxt-link>
@@ -76,7 +76,7 @@ const getLinkClass = (path: string) => {
           Bug Report
         </nuxt-link>
         <nuxt-link to="#">
-          <nuxt-img src="/kofi.png" class="w-8" alt="" />
+          <nuxt-img src="kofi.png" class="w-8" alt="" />
         </nuxt-link>
         <!--        <Icon name="carbon:awake" /> -->
         <!--        <Icon name="carbon:asleep" /> -->
