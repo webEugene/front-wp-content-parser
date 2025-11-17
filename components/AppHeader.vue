@@ -76,7 +76,7 @@ const getLinkClass = (path: string) => {
           Bug Report
         </nuxt-link>
         <nuxt-link to="#">
-          <nuxt-img src="/kofi.png" class="w-8" alt="" />
+          <nuxt-img src="kofi.png" class="w-8" alt="" />
         </nuxt-link>
         <!--        <Icon name="carbon:awake" /> -->
         <!--        <Icon name="carbon:asleep" /> -->
