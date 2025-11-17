@@ -1,4 +1,4 @@
 export default defineAppConfig({
   title: "WP Parser Content",
-  apiUrl: "http://localhost:5000/api/v1/",
+  apiUrl: "https://backend-wp-content-parser-59rs.vercel.app/api/v1/",
 });
