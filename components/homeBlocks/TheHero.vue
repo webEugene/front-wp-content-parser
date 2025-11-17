@@ -1,6 +1,4 @@
-<script setup lang="ts">
-import BaseButton from "~/components/atoms/BaseButton.vue";
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="dark:bg-gray-800 bg-blue-50 w-full">
@@ -21,11 +19,16 @@ import BaseButton from "~/components/atoms/BaseButton.vue";
           Easily extract content from any WordPress page using our powerful,
           user-friendly tool.
         </p>
-        <base-button
-          class="px-5 py-3 md:px-7 md:py-4 lg:px-9 lg:py-5 rounded text-base md:text-lg lg:text-xl"
+        <nuxt-link
+          to="/under-construction"
+          class="rounded px-5 py-3 md:px-7 md:py-4 lg:px-9 lg:py-5 bg-indigo-600 text-base md:text-lg lg:text-xl text-white shadow-sm hover:bg-indigo-500"
         >
           Explore WP content parser
-        </base-button>
+          <span
+            class="rounded-md bg-red-600 py-0.5 px-2.5 border border-transparent text-sm text-white transition-all shadow-sm"
+            >very soon</span
+          >
+        </nuxt-link>
       </div>
       <img
         class="w-80 order-1 md:order-2"
@@ -36,5 +39,3 @@ import BaseButton from "~/components/atoms/BaseButton.vue";
     </section>
   </div>
 </template>
-
-<style scoped></style>

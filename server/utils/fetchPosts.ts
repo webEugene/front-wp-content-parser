@@ -1,3 +1,5 @@
+import type { CreateReportType } from "~/types/ReportType";
+
 export const fetchPostsApi = () => {
   const { apiUrl } = useAppConfig();
 
@@ -23,7 +25,7 @@ export const fetchPostsApi = () => {
 
   const getExtractedSitemapList = async (
     url: string,
-    host: string | undefined,
+    host: string | undefined
   ) => {
     return await $fetch(`${apiUrl}urls/sitemap-extract`, {
       method: "POST",
@@ -44,12 +46,6 @@ export const fetchPostsApi = () => {
     });
   };
 
-  interface ICreateReport {
-    pageName: string;
-    email?: string | null;
-    report: string;
-  }
-
   interface IParsingContentData {
     url: string;
     homeTitle?: string;
@@ -64,21 +60,36 @@ export const fetchPostsApi = () => {
     defaultContent?: string;
   }
 
-  const createReport = async (data: ICreateReport) => {
+  const createReport = async (data: CreateReportType) => {
     const { pageName, email, report } = data;
-    return await $fetch(`${apiUrl}reports/create-report`, {
-      method: "POST",
-      body: {
-        pageName,
-        email,
-        report,
-      },
-    });
+
+    // await $fetch(`${apiUrl}reports/create-report`, {
+    //   method: "POST",
+    //   body: {
+    //     pageName,
+    //     email,
+    //     report,
+    //   },
+    // });
+
+    try {
+      const response = await $fetch(`${apiUrl}reports/create-report`, {
+        method: "POST",
+        body: { pageName, email, report },
+      });
+      return response;
+    } catch (error: any) {
+      console.log(error?.cause);
+
+      throw new Error(
+        `${error} :Something is wrong with your internet connection or the server is unreachable.`
+      );
+    }
   };
 
   const parseContent = async (
     data: IParsingContentData,
-    host: string | undefined,
+    host: string | undefined
   ) => {
     return await $fetch(`${apiUrl}parse/content`, {
       method: "POST",

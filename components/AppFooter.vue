@@ -7,23 +7,23 @@ const homepageList = ref([
   {
     title: "Home",
     label: "Home",
-    url: "#",
+    url: "/",
   },
   {
-    title: "Features",
+    title: "Free Tools",
     label: "Features",
-    url: "#",
+    url: "/",
   },
   {
     title: "About",
     label: "About",
-    url: "#",
+    url: "/",
   },
-  {
-    title: "Pricing",
-    label: "Pricing",
-    url: "#",
-  },
+  // {
+  //   title: "Pricing",
+  //   label: "Pricing",
+  //   url: "/",
+  // },
 ]);
 
 const freeProductsList = ref([
@@ -53,23 +53,23 @@ const companyList = ref([
   {
     title: "Terms of Service",
     label: "Terms of Service",
-    url: "/static/terms-of-service",
+    url: "/terms-of-service",
   },
   {
     title: "Privacy/Cookie Policy",
     label: "Privacy/Cookie Policy",
-    url: "/static/privacy-and-cookie-policy",
+    url: "/privacy-and-cookie-policy",
   },
   {
     title: "Bug Report",
     label: "Report",
     url: "/bug-report",
   },
-  {
-    title: "Documentation",
-    label: "Documentation",
-    url: "#",
-  },
+  // {
+  //   title: "Documentation",
+  //   label: "Documentation",
+  //   url: "/documentation",
+  // },
 ]);
 
 const getLinkClass = (path: string) => {

@@ -34,6 +34,10 @@
     "eslint-config-prettier": "^10.0.2",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-vue": "^9.32.0",
-    "sass-embedded": "^1.87.0"
+    "sass-embedded": "^1.87.0",
+    "stylelint": "^16.25.0",
+    "stylelint-config-standard-scss": "^16.0.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "stylelint-prettier": "^5.0.3"
   }
 }

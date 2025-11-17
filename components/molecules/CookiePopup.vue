@@ -1,21 +1,24 @@
 <script setup lang="ts">
-import { getData, setData } from "nuxt-storage/local-storage";
+import { ref } from "vue";
+import { useCookie } from "#app";
 
-const cookieDismissed = ref(false);
-
-onMounted(() => {
-  const storedValue = getData("cookie-dismissed");
-  cookieDismissed.value = storedValue === "true";
+const cookieDismissed = useCookie<boolean>("cookie-dismissed", {
+  default: () => false,
+  sameSite: "lax",
+  path: "/",
+  maxAge: 60 * 60 * 24 * 365, // 1 year
 });
 
+const isDismissed = ref(cookieDismissed.value);
+
 const dismissCookie = () => {
-  setData("cookie-dismissed", "true");
   cookieDismissed.value = true;
+  isDismissed.value = true;
 };
 </script>
 
 <template>
-  <div v-if="!cookieDismissed" class="fixed bottom-0 left-0 mb-4 ml-4 w-64">
+  <div v-if="!isDismissed" class="fixed bottom-0 left-0 mb-4 ml-4 w-64">
     <div class="bg-white rounded-lg shadow-lg p-4">
       <div class="flex items-center justify-between mb-2">
         <div class="flex items-center">
