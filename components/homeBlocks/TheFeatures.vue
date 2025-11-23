@@ -7,19 +7,19 @@ const featureList = ref([
     url: "/products/wp-check",
   },
   {
-    src: "sitemap-find.png",
+    src: "/imgs/sitemap-find.png",
     title: "Sitemap find",
     text: "Sitemap Find tool quickly detects sitemaps and shows what’s inside.",
     url: "/products/sitemap-find",
   },
   {
-    src: "sitemap-extractor.png",
+    src: "/imgs/sitemap-extractor.png",
     title: "Sitemap extractor",
     text: "Sitemap Extractor parses all links from sitemap and give you a list of links for easy usage.",
     url: "/products/sitemap-extractor",
   },
   {
-    src: "links-grabber.png",
+    src: "/imgs/links-grabber.png",
     title: "Links grabber",
     text: "Our Link Grabber tool scans the HTML and displays all found URLs in a clean, easy-to-use format — perfect for SEO, research, and analysis.",
     url: "/products/links-grabber",
