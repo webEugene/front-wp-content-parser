@@ -1,25 +1,25 @@
 <script setup lang="ts">
 const featureList = ref([
   {
-    src: "/imgs/wp-check.png",
+    src: "../imgs/wp-check.png",
     title: "WP Check",
     text: "Easy check if website is created on Wordpress. Just enter url and click to get the answer.",
     url: "/products/wp-check",
   },
   {
-    src: "/imgs/sitemap-find.png",
+    src: "../imgs/sitemap-find.png",
     title: "Sitemap find",
     text: "Sitemap Find tool quickly detects sitemaps and shows what’s inside.",
     url: "/products/sitemap-find",
   },
   {
-    src: "/imgs/sitemap-extractor.png",
+    src: "../imgs/sitemap-extractor.png",
     title: "Sitemap extractor",
     text: "Sitemap Extractor parses all links from sitemap and give you a list of links for easy usage.",
     url: "/products/sitemap-extractor",
   },
   {
-    src: "/imgs/links-grabber.png",
+    src: "../imgs/links-grabber.png",
     title: "Links grabber",
     text: "Our Link Grabber tool scans the HTML and displays all found URLs in a clean, easy-to-use format — perfect for SEO, research, and analysis.",
     url: "/products/links-grabber",

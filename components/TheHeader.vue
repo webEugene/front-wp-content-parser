@@ -20,13 +20,32 @@ const links = ref([
   },
 ]);
 
-const mobileMenuOpen = ref(false);
+const isOpen = ref(false);
+const menuRef = ref(null);
 
 const getLinkClass = (path: string) => {
   return route.path === path
     ? "text-blue-600 font-bold" // Active link styles
     : "text-gray-700 hover:text-blue-600"; // Inactive link styles
 };
+
+const toggleMenu = () => {
+  isOpen.value = !isOpen.value;
+};
+
+function handleClickOutside(e: Event) {
+  if (menuRef.value && !menuRef.value?.contains(e.target)) {
+    isOpen.value = false;
+  }
+}
+
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener("click", handleClickOutside);
+});
 </script>
 
 <template>
@@ -55,7 +74,8 @@ const getLinkClass = (path: string) => {
       <!-- MOBILE MENU -->
       <transition name="fade">
         <ul
-          v-if="mobileMenuOpen"
+          v-if="isOpen"
+          ref="menuRef"
           class="lg:hidden flex flex-col items-center mt-2 py-4 absolute bg-blue-50 w-[100%] top-11 left-0"
         >
           <li v-for="link in links" :key="link.label" class="p-2 hover">
@@ -63,6 +83,7 @@ const getLinkClass = (path: string) => {
               :to="link.to"
               class="uppercase text-xs font-medium hover:text-blue-600"
               :class="getLinkClass(link.to)"
+              @click="toggleMenu"
               >{{ link.label }}</nuxt-link
             >
           </li>
@@ -76,7 +97,7 @@ const getLinkClass = (path: string) => {
           Bug Report
         </nuxt-link>
         <nuxt-link to="#">
-          <nuxt-img src="/imgs/kofi.png" class="w-8" alt="" />
+          <nuxt-img src="../imgs/kofi.png" class="w-8" alt="" />
         </nuxt-link>
         <!--        <Icon name="carbon:awake" /> -->
         <!--        <Icon name="carbon:asleep" /> -->
@@ -93,7 +114,7 @@ const getLinkClass = (path: string) => {
 
         <button
           class="lg:hidden block text-gray-600 focus:outline-none ml-4"
-          @click="mobileMenuOpen = !mobileMenuOpen"
+          @click.stop="toggleMenu"
         >
           <svg
             class="h-6 w-6"
@@ -102,14 +123,14 @@ const getLinkClass = (path: string) => {
             stroke="currentColor"
           >
             <path
-              v-if="!mobileMenuOpen"
+              v-if="!isOpen"
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
               d="M4 6h16M4 12h16m-7 6h7"
             ></path>
             <path
-              v-if="mobileMenuOpen"
+              v-if="isOpen"
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
