@@ -118,8 +118,9 @@ const disabledBtn = computed(() => {
       <div
         class="form-wp-check sm:w-full w-2/4 p-2 mx-auto flex flex-col justify-center items-center"
       >
-        <div class="w-96">
+        <div class="w-64 sm:w-96">
           <base-input
+            id="id-link-grabber"
             v-model:input-value="url"
             placeholder="Enter a valid URL"
             :error-message="!!errorMessage"
@@ -143,10 +144,12 @@ const disabledBtn = computed(() => {
         <div class="my-3 text-xl font-bold text-blue-600">
           {{ response.domain }}
         </div>
-        <span class="font-medium"
-          >Total: {{ filteredItems.length }} /
-          {{ response.data.length }} links</span
-        >
+        <div class="font-medium">
+          <strong
+            >Total: {{ filteredItems.length }} /
+            {{ response.data.length }} links</strong
+          >
+        </div>
         <div class="flex justify-between">
           <div class="flex">
             <div v-for="filter in filters" :key="filter.name" class="mr-2">
@@ -192,5 +195,17 @@ const disabledBtn = computed(() => {
         <span>{{ error }}</span>
       </base-alert>
     </div>
+    <content-wrapper>
+      <h2 class="text-center mb-2 text-2xl font-semibold">
+        How to Use Link Grabber
+      </h2>
+      <p>
+        Simply enter any webpage URL — with or without https — into the input
+        field and press “Grab”. The tool instantly scans the page’s HTML and
+        collects every link it finds. Within seconds, you’ll get a clean,
+        organized list of URLs perfect for SEO tasks, research, or deeper
+        website analysis. Fast, effortless, and highly effective.
+      </p>
+    </content-wrapper>
   </div>
 </template>

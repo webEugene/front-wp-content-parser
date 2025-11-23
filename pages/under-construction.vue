@@ -7,7 +7,7 @@ useSeoMeta({
 
 <template>
   <div>
-    <heading-page heading="This page is underconstaruction"> </heading-page>
+    <heading-page heading="This page is underconstruction"></heading-page>
     <content-wrapper>
       <h2 class="text-center mb-2 text-2xl font-semibold">
         Very soon Parsing page will be working

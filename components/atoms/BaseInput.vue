@@ -2,6 +2,7 @@
 type InputType = "text" | "submit" | "reset";
 
 const { errorMessage = false } = defineProps<{
+  id: string;
   type?: InputType;
   placeholder?: string;
   errorMessage?: boolean;
@@ -13,6 +14,7 @@ defineEmits(["update:inputValue"]);
 
 <template>
   <input
+    :id="id"
     :value="inputValue"
     :type="type ?? `text`"
     :placeholder="placeholder"

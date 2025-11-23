@@ -26,7 +26,7 @@ async function getSitemapUrl() {
       "/api/extract/sitemap-list-extract",
       {
         params: { url: url.value },
-      },
+      }
     );
 
     if (fetchError.value) {
@@ -74,8 +74,9 @@ const disabledBtn = computed(() => {
       <div
         class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center items-center"
       >
-        <div class="w-96">
+        <div class="w-64 sm:w-96">
           <base-input
+            id="id-sitemap-extractor"
             v-model:input-value="url"
             placeholder="Enter a valid URL"
             :error-message="!!errorMessage"
@@ -113,20 +114,13 @@ const disabledBtn = computed(() => {
     </div>
     <content-wrapper>
       <h2 class="text-center mb-2 text-2xl font-semibold">
-        How to use Sitemap Extractor
+        How to Use Sitemap Extractor
       </h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium
-        amet animi consequuntur cupiditate ea eius error, expedita illum ipsam
-        iure magnam numquam quis tempora totam ullam veniam.
-      </p>
-
-      <p>
-        Aliquam explicabo, reprehenderit. Accusantium alias cumque doloribus ex
-        fugit libero maxime nostrum, odit qui rem? A accusantium adipisci animi
-        asperiores aut beatae consequuntur, culpa cumque deleniti doloribus
-        ipsam iste itaque iure laboriosam laborum magni minus odit officiis
-        omnis pariatur quo ratione reiciendis sed similique totam.
+        Enter any domain — with or without https — into the input field and
+        click “Extract”. The tool automatically finds the site’s sitemap, parses
+        all available links, and delivers a clean, ready-to-use list. Quick,
+        simple, and perfect for effortless data extraction.
       </p>
     </content-wrapper>
   </div>

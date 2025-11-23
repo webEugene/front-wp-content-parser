@@ -26,7 +26,7 @@ async function getSitemapUrl() {
       "/api/detect/sitemap-detect",
       {
         params: { url: url.value },
-      },
+      }
     );
 
     if (fetchError.value) {
@@ -87,8 +87,9 @@ const disabledBtn = computed(() => {
       <div
         class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center items-center"
       >
-        <div class="w-96">
+        <div class="w-64 sm:w-96">
           <base-input
+            id="id-sitemap-find"
             v-model:input-value="url"
             placeholder="Enter a valid URL"
             :error-message="!!errorMessage"
@@ -156,12 +157,13 @@ const disabledBtn = computed(() => {
     </div>
     <content-wrapper>
       <h2 class="text-center mb-2 text-2xl font-semibold">
-        How to use Sitemap Find
+        How to Use Sitemap Find
       </h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet
-        dolorem earum itaque iure laborum minima veritatis voluptatum. Facilis,
-        vero?
+        Just enter a domain — with or without https — into the search field and
+        hit “Find”. Our tool instantly scans the website, automatically detects
+        available sitemaps, and reveals what’s inside them, including valuable
+        page metadata. Fast, accurate, and effortless.
       </p>
     </content-wrapper>
   </div>

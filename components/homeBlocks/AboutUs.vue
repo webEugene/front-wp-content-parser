@@ -1,7 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="sm:flex items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+  <div
+    id="about"
+    class="sm:flex items-center mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
+  >
     <div class="sm:w-1/2 p-10">
       <div class="image object-center text-center">
         <img src="https://i.imgur.com/WbQnbas.png" />
@@ -9,16 +12,17 @@
     </div>
     <div class="sm:w-1/2 p-5">
       <div class="text">
-        <span class="text-gray-500 border-b-2 border-indigo-600 uppercase"
-          >About us</span
-        >
         <h2 class="my-4 font-bold text-3xl sm:text-4xl">
           About <span class="text-indigo-600">Our Company</span>
         </h2>
         <p class="text-gray-700">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
-          commodi doloremque, fugiat illum magni minus nisi nulla numquam
-          obcaecati placeat quia, repellat tempore voluptatum.
+          We create simple, powerful tools that make working with websites
+          effortless. Our mission is to help users quickly understand, extract,
+          and analyze WordPress content with zero hassle. Whether you’re an SEO
+          specialist, developer, marketer, or curious site owner — our platform
+          gives you fast, accurate insights in just a few clicks. We focus on
+          clean design, reliable results, and user-friendly experiences so you
+          can get the information you need without the complexity.
         </p>
       </div>
     </div>

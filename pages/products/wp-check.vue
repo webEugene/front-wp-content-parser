@@ -25,7 +25,7 @@ async function checkWpDetect() {
       "/api/detect/wp-detect",
       {
         params: { url: url.value },
-      },
+      }
     );
 
     if (fetchError.value) {
@@ -50,7 +50,7 @@ const disabledBtn = computed(() => {
 
 <template>
   <div>
-    <heading-page heading="Wp Check">
+    <heading-page heading="WordPress Check">
       <template #text>
         <p>
           Easy check if website is created on <strong>Wordpress</strong>. Just
@@ -62,8 +62,9 @@ const disabledBtn = computed(() => {
       <div
         class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center items-center"
       >
-        <div class="w-96">
+        <div class="w-64 sm:w-96">
           <base-input
+            id="input-wp-check"
             v-model:input-value="url"
             placeholder="Enter a valid URL"
             :error-message="!!errorMessage"
@@ -92,8 +93,21 @@ const disabledBtn = computed(() => {
       >
         We cannot access your website
         <strong>{{ response?.data.url }}</strong> in order to perform our test!
-        Either the site is not online, or our tool is being blocked by your
-        server. <strong>Try again</strong> or <strong>Try another URL</strong>
+        <br /><br />
+        Reasons:
+        <ul>
+          <li>
+            - <strong>{{ response?.data.url }}</strong> is not written on
+            Wordpress (most common);
+          </li>
+          <li>
+            - <strong>{{ response?.data.url }}</strong> is not online;
+          </li>
+          <li>
+            - our tool is being blocked by
+            <strong>{{ response?.data.url }}</strong> server;
+          </li>
+        </ul>
       </base-alert>
       <base-alert v-if="error" type="error">
         <span>{{ error }}</span>
@@ -101,12 +115,14 @@ const disabledBtn = computed(() => {
     </div>
     <content-wrapper>
       <h2 class="text-center mb-2 text-2xl font-semibold">
-        How to use Wp Check
+        How to Use Wp Check
       </h2>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad amet
-        dolorem earum itaque iure laborum minima veritatis voluptatum. Facilis,
-        vero?
+        Checking a website has never been easier. Simply enter any domain — with
+        or without https — into the field, and Wp Check will instantly validate
+        it. Click “Check” and let the tool do the work. In seconds, you’ll see a
+        clear result showing whether the site runs on WordPress or why it
+        couldn’t be detected. Fast, simple, and reliable.
       </p>
     </content-wrapper>
   </div>

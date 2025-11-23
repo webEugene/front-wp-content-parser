@@ -12,12 +12,12 @@ const homepageList = ref([
   {
     title: "Free Tools",
     label: "Features",
-    url: "/",
+    url: "/#features",
   },
   {
     title: "About",
     label: "About",
-    url: "/",
+    url: "/#about",
   },
   // {
   //   title: "Pricing",
