@@ -91,7 +91,7 @@ const getLinkClass = (path: string) => {
             <nuxt-img
               class="w-16"
               loading="lazy"
-              src="/imgs/logo.png"
+              src="../imgs/logo.png"
               alt="WP Content Scraper"
             />
           </nuxt-link>

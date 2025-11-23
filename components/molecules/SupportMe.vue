@@ -16,7 +16,7 @@
         <nuxt-img
           class="w-72"
           loading="lazy"
-          src="/imgs/support_me_on_kofi_blue.png"
+          src="../imgs/support_me_on_kofi_blue.png"
           alt="Buy me a coffee"
       /></nuxt-link>
     </div>
