@@ -16,29 +16,29 @@ const reportSchema = toTypedSchema(
 );
 const pageNameList = ref([
   {
-    name: "Wp Check",
+    name: "Wordpress Check",
     label: "wp-check",
   },
   {
-    name: "Sitemap test",
-    label: "sitemap-test",
+    name: "Sitemap fund",
+    label: "sitemap-find",
   },
   {
     name: "Sitemap Extractor",
     label: "sitemap-extractor",
   },
   {
-    name: "Link grabber",
-    label: "link-grabber",
+    name: "Links grabber",
+    label: "links-grabber",
   },
   {
-    name: "Login",
-    label: "login",
+    name: "Where we need to improve",
+    label: "improve",
   },
-  {
-    name: "Sign in",
-    label: "sign-in",
-  },
+  // {
+  //   name: "Sign in",
+  //   label: "sign-in",
+  // },
 ]);
 const response = ref(null);
 const error = ref(null);
@@ -105,20 +105,24 @@ const getCharacterLength = computed(() => {
   <div
     class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8"
   >
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <div class="w-64 sm:w-96 sm:mx-auto sm:w-full sm:max-w-sm">
       <icon name="carbon:report" size="3em" class="text-red-500 flex mx-auto" />
       <h2
         class="my-5 text-center text-2xl/9 font-bold tracking-tight text-gray-900"
       >
-        Hello, this is bug report page!
+        Hello, this is bug/improve report page!
       </h2>
-      <span class="mt-2"
-        >Please, describe error that you faced with, and we try to fix it as
-        fast as possible. And we very appreciate your help to make our service
-        better. Please check our updates page, to see all notification that has
-        been resolved. Or (not required) you may add your email and we inform
-        you when it will be fixed.
-      </span>
+      <p class="mt-2">
+        Please, describe error that you faced with, and we try to fix it as fast
+        as possible. And we very appreciate your help to make our service
+        better.
+      </p>
+      <!-- <br />
+      <p>
+        Check our updates page, to see all notification that has been resolved.
+        Or (not required) you may add your email and we inform you when it will
+        be fixed.
+      </p> -->
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">

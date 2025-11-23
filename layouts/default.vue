@@ -2,12 +2,12 @@
 
 <template>
   <div>
-    <app-header />
+    <the-header />
     <main class="w-full pt-14">
       <slot />
       <support-me />
     </main>
-    <app-footer />
+    <the-footer />
   </div>
 </template>
 

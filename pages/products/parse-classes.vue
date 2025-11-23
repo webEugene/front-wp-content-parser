@@ -25,7 +25,7 @@ async function parseClasses() {
       "/api/parsing/parsing-classes",
       {
         params: { url: url.value },
-      },
+      }
     );
 
     if (fetchError.value) {
@@ -62,8 +62,9 @@ const disabledBtn = computed(() => {
       <div
         class="form-wp-check w-2/4 p-2 mx-auto flex flex-col justify-center items-center"
       >
-        <div class="w-96">
+        <div class="w-64 sm:w-96">
           <base-input
+            id="id-parse-classes"
             v-model:input-value="url"
             placeholder="Enter a valid URL"
             :error-message="!!errorMessage"

@@ -34,7 +34,7 @@ const featureList = ref([
 </script>
 
 <template>
-  <div class="bg-gray-50">
+  <div id="features" class="bg-gray-50">
     <section class="py-16 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto">
         <!-- Section Header -->

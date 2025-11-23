@@ -37,6 +37,11 @@ export default defineNuxtConfig({
     },
   },
   css: ["~/assets/css/main.css"],
+  router: {
+    options: {
+      scrollBehaviorType: "smooth",
+    },
+  },
   compatibilityDate: "2024-11-01",
   eslint: {
     config: {
@@ -44,7 +49,6 @@ export default defineNuxtConfig({
         indent: "tab",
         quotes: "single",
         semi: true,
-        // ...
       },
     },
   },
