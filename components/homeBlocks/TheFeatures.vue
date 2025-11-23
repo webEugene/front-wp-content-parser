@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const featureList = ref([
   {
-    src: "wp-check.png",
+    src: "/imgs/wp-check.png",
     title: "WP Check",
     text: "Easy check if website is created on Wordpress. Just enter url and click to get the answer.",
     url: "/products/wp-check",
