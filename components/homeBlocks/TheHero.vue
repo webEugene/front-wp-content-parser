@@ -33,7 +33,7 @@
       <img
         class="w-80 order-1 md:order-2"
         loading="lazy"
-        src="~/assets/images/hero_1.png"
+        src="/imgs/hero_1.png"
         alt=""
       />
     </section>

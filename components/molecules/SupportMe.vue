@@ -10,11 +10,13 @@
         title="Buy Me A Coffee"
         rel="noopener noreferrer nofollow"
       >
-        <div class="font-semibold text-xl mr-4 mb-2 md:mb-0">Want to support?</div>
+        <div class="font-semibold text-xl mr-4 mb-2 md:mb-0">
+          Want to support?
+        </div>
         <nuxt-img
           class="w-72"
           loading="lazy"
-          src="/support_me_on_kofi_blue.png"
+          src="/imgs/support_me_on_kofi_blue.png"
           alt="Buy me a coffee"
       /></nuxt-link>
     </div>
