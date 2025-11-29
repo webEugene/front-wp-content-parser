@@ -3,12 +3,17 @@ import { ref } from "vue";
 import { useField } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
 import { urlWithMessageSchema } from "~/schemas/urlSchema";
+
 // https://chromewebstore.google.com/detail/link-grabber/caodelkhipncidmoebgbbeemedohcdma
 // Function to get the class for a link
 useSeoMeta({
   title: "Link Grabber Tool | Extract All Links from Any Webpage",
   description:
     "Grab all links from an HTML page in seconds. Use our fast and simple tool to extract, view, and analyze every URL on a web page.",
+});
+
+definePageMeta({
+  key: (route) => route.fullPath,
 });
 
 interface ILinkData {
@@ -97,6 +102,15 @@ const disabledBtn = computed(() => {
   return !url.value || !!errorMessage.value || loading.value;
 });
 
+onBeforeRouteLeave(() => {
+  response.value = { data: [], domain: "" };
+  error.value = null;
+  loading.value = false;
+
+  filters.value = filters.value.map((f) => ({ ...f, checked: false }));
+});
+
+const { downloadJSON, downloadCSV } = useDownload();
 // TODO:
 // - Link grabber page:
 // -- return empty result if url not exists and stop continues loading;
@@ -150,8 +164,10 @@ const disabledBtn = computed(() => {
             {{ response.data.length }} links</strong
           >
         </div>
-        <div class="flex justify-between">
-          <div class="flex">
+        <div
+          class="flex flex-col justify-center items-center py-2 md:flex-row md:items-end md:justify-between"
+        >
+          <div class="flex flex-col mb-2 sm:flex-row sm:mb-0">
             <div v-for="filter in filters" :key="filter.name" class="mr-2">
               <label class="inline-flex items-center hover:cursor-pointer">
                 <input
@@ -164,12 +180,32 @@ const disabledBtn = computed(() => {
             </div>
           </div>
 
-          <button
-            class="rounded bg-indigo-600 hover:bg-indigo-400 px-3 py-1 text-white font-medium flex items-center"
-          >
-            <icon name="carbon:document-download" class="mr-1" />
-            <span class="text-sm">Download in CSV</span>
-          </button>
+          <div v-if="filteredItems.length" class="flex flex-col">
+            <button
+              class="rounded bg-indigo-600 hover:bg-indigo-400 mb-2 px-3 py-1 text-white font-medium flex items-center"
+            >
+              <icon name="carbon:document-download" class="mr-1" />
+              <span
+                class="text-sm"
+                @click="
+                  downloadJSON(filteredItems, cleanHostname(response.domain))
+                "
+                >Download JSON format</span
+              >
+            </button>
+            <button
+              class="rounded bg-indigo-600 hover:bg-indigo-400 px-3 py-1 text-white font-medium flex items-center"
+            >
+              <icon name="carbon:document-download" class="mr-1" />
+              <span
+                class="text-sm"
+                @click="
+                  downloadCSV(filteredItems, cleanHostname(response.domain))
+                "
+                >Download CSV format</span
+              >
+            </button>
+          </div>
         </div>
         <ul class="border rounded p-2 mt-4">
           <li
