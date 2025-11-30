@@ -44,8 +44,8 @@ async function getSitemapUrl() {
       error.value = null;
       url.value = "";
 
-      if (Array.isArray(rawData.data)) {
-        formattedList.value = rawData.data.join("\n");
+      if (Array.isArray(rawData.data.allowedLinks)) {
+        formattedList.value = rawData.data.allowedLinks.join("\n");
       } else {
         formattedList.value = "The response does not contain a valid array.";
       }
@@ -62,6 +62,8 @@ async function getSitemapUrl() {
 const disabledBtn = computed(() => {
   return !url.value || !!errorMessage.value || loading.value;
 });
+
+const { downloadJSON, downloadCSV } = useDownload();
 // https://seositecheckup.com/
 </script>
 
@@ -73,6 +75,11 @@ const disabledBtn = computed(() => {
           Sitemap Extractor parses all links from <strong>sitemap</strong> and
           give you a list of links for easy usage.
         </p>
+        <div
+          class="inline-block rounded-md bg-blue-600 mt-5 py-0.5 px-2.5 border border-transparent text-sm text-white transition-all shadow-sm"
+        >
+          There is <strong>FREE</strong> 1000 links limit are available.
+        </div>
       </template>
     </heading-page>
     <div class="wrapper mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -83,7 +90,7 @@ const disabledBtn = computed(() => {
           <base-input
             id="id-sitemap-extractor"
             v-model:input-value="url"
-            placeholder="Enter a valid URL"
+            placeholder="Enter https://sample.com or sample.com"
             :error-message="!!errorMessage"
           />
           <span v-if="errorMessage" class="error font-bold text-amber-700">{{
@@ -101,8 +108,52 @@ const disabledBtn = computed(() => {
           <span v-else>Processing... </span>
         </base-button>
       </div>
-      <div v-if="response && response.data && response.data.length">
-        <span class="font-medium">Total: {{ response.data.length }} links</span>
+      <div v-if="response?.data && response.data.allowedLinks">
+        <div
+          class="flex flex-col justify-center items-center py-2 md:flex-row md:items-end md:justify-between"
+        >
+          <div class="flex flex-col">
+            <span class="font-medium"
+              ><b>Total</b>: {{ response.data.total }} links</span
+            >
+            <span class="font-medium"
+              ><b>Free to use</b>:
+              {{ response.data.allowedLinks.length }} links</span
+            >
+          </div>
+          <div class="flex flex-col">
+            <button
+              class="rounded bg-indigo-600 hover:bg-indigo-400 mb-2 px-3 py-1 text-white font-medium flex items-center"
+            >
+              <icon name="carbon:document-download" class="mr-1" />
+              <span
+                class="text-sm"
+                @click="
+                  downloadJSON(
+                    response.data.allowedLinks,
+                    cleanHostname(response.data.allowedLinks[0])
+                  )
+                "
+                >Download JSON</span
+              >
+            </button>
+            <button
+              class="rounded bg-indigo-600 hover:bg-indigo-400 px-3 py-1 text-white font-medium flex items-center"
+            >
+              <icon name="carbon:document-download" class="mr-1" />
+              <span
+                class="text-sm"
+                @click="
+                  downloadCSV(
+                    response.data.allowedLinks,
+                    cleanHostname(response.data.allowedLinks[0])
+                  )
+                "
+                >Download CSV</span
+              >
+            </button>
+          </div>
+        </div>
         <div class="mt-2">
           <textarea
             id="response-text"
@@ -122,10 +173,11 @@ const disabledBtn = computed(() => {
         How to Use Sitemap Extractor
       </h2>
       <p>
-        Enter any domain — with or without https — into the input field and
-        click “Extract”. The tool automatically finds the site’s sitemap, parses
-        all available links, and delivers a clean, ready-to-use list. Quick,
-        simple, and perfect for effortless data extraction.
+        Just enter any domain — with or without https — and click
+        <b>“Extract”</b>. No need for <code>sitemap.xml</code> or any extra
+        paths like other tools require. Our service automatically finds the
+        sitemap, parses all links, and delivers a clean, ready-to-use list.
+        Fast, effortless, and truly hassle-free data extraction.
       </p>
     </content-wrapper>
   </div>

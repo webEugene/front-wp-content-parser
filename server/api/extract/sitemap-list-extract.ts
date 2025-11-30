@@ -4,7 +4,10 @@ import { urlSchema } from "~/server/schemas/urlSchema";
 
 export default defineEventHandler(async (event) => {
   const extractedSitemapListSchema = z.object({
-    data: z.array(z.string()),
+    data: z.object({
+      total: z.number(),
+      allowedLinks: z.array(z.string()),
+    }),
   });
   const query = await getValidatedQuery(event, urlSchema.safeParse);
 

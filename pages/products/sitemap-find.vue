@@ -95,7 +95,7 @@ const disabledBtn = computed(() => {
           <base-input
             id="id-sitemap-find"
             v-model:input-value="url"
-            placeholder="Enter a valid URL"
+            placeholder="Enter https://sample.com or sample.com"
             :error-message="!!errorMessage"
           />
           <span v-if="errorMessage" class="error font-bold text-amber-700">{{
