@@ -21,6 +21,12 @@ export default withNuxt(
     },
   },
   {
+    files: ["nuxt.config.ts", "nuxt.config.mjs"],
+    rules: {
+      "nuxt/no-incorrect-config-order": "off",
+    },
+  },
+  {
     files: ["layouts/default.vue"],
     rules: { "vue/component-name-in-template-casing": "off" },
   },

@@ -1,10 +1,10 @@
 import type { ReportType } from "~/types/ReportType";
 
 export const fetchGetsApi = () => {
-  const { apiUrl } = useAppConfig();
+  const config = useRuntimeConfig();
 
   const getAllReports = async (): Promise<ReportType> => {
-    return await $fetch(`${apiUrl}reports/all-reports`);
+    return await $fetch(`${config.public.apiURL}reports/all-reports`);
   };
 
   return {

@@ -13,10 +13,10 @@ export default defineEventHandler(async (event) => {
 
   const response = await getWpDetectCheck(
     query.data.url,
-    event.node.req.headers.host,
+    event.node.req.headers.host
   );
 
-  if (response?.statusCode === 404) {
+  if (response?.statusCode === 404 || response?.statusCode === 500) {
     return response;
   }
 

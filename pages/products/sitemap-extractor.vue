@@ -29,7 +29,12 @@ async function getSitemapUrl() {
       }
     );
 
-    if (fetchError.value) {
+    if (fetchError.value && fetchError.value?.statusCode === 500) {
+      error.value =
+        "Something went wrong. Please check your internet connection. Or try a bit later";
+      response.value = null;
+      formattedList.value = "";
+    } else if (fetchError.value) {
       error.value = fetchError.value.data.data.message;
       response.value = null;
       formattedList.value = "";
