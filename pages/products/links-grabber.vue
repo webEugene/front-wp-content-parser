@@ -48,7 +48,11 @@ async function grabLink() {
       }
     );
 
-    if (fetchError.value) {
+    if (fetchError.value && fetchError.value?.statusCode === 500) {
+      error.value =
+        "Something went wrong. Please check your internet connection. Or try a bit later";
+      response.value = null;
+    } else if (fetchError.value) {
       error.value = fetchError.value.message;
       response.value = null;
     } else {
@@ -113,9 +117,7 @@ onBeforeRouteLeave(() => {
 const { downloadJSON, downloadCSV } = useDownload();
 // TODO:
 // - Link grabber page:
-// -- return empty result if url not exists and stop continues loading;
 // -- add domain to a path if link grabbed from not home page;
-// -- add load button to save all links as csv;
 </script>
 
 <template>

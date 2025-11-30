@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
         title: z.string(),
         duplicate: z.boolean().nullable().optional(),
         origin: z.string().nullable(),
-      }),
+      })
     ),
   });
   const query = await getValidatedQuery(event, urlSchema.safeParse);
@@ -24,8 +24,12 @@ export default defineEventHandler(async (event) => {
 
   const response = await getGrabbedLinks(
     query.data.url,
-    event.node.req.headers.host,
+    event.node.req.headers.host
   );
+
+  if (response?.statusCode === 404 || response?.statusCode === 500) {
+    return response;
+  }
 
   const parsed = grabbedLinksSchema.safeParse(response);
 

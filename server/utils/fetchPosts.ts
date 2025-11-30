@@ -1,10 +1,10 @@
 import type { CreateReportType } from "~/types/ReportType";
 
 export const fetchPostsApi = () => {
-  const { apiUrl } = useAppConfig();
+  const config = useRuntimeConfig();
 
   const getWpDetectCheck = async (url: string, host: string | undefined) => {
-    return await $fetch(`${apiUrl}urls/wp-check`, {
+    return await $fetch(`${config.public.apiURL}urls/wp-check`, {
       method: "POST",
       body: {
         url,
@@ -14,7 +14,7 @@ export const fetchPostsApi = () => {
   };
 
   const getSitemapFind = async (url: string, host: string | undefined) => {
-    return await $fetch(`${apiUrl}urls/sitemap-check`, {
+    return await $fetch(`${config.public.apiURL}urls/sitemap-check`, {
       method: "POST",
       body: {
         url,
@@ -27,7 +27,7 @@ export const fetchPostsApi = () => {
     url: string,
     host: string | undefined
   ) => {
-    return await $fetch(`${apiUrl}urls/sitemap-extract`, {
+    return await $fetch(`${config.public.apiURL}urls/sitemap-extract`, {
       method: "POST",
       body: {
         url,
@@ -37,7 +37,7 @@ export const fetchPostsApi = () => {
   };
 
   const getGrabbedLinks = async (url: string, host: string | undefined) => {
-    return await $fetch(`${apiUrl}urls/grab-links`, {
+    return await $fetch(`${config.public.apiURL}urls/grab-links`, {
       method: "POST",
       body: {
         url,
@@ -63,7 +63,7 @@ export const fetchPostsApi = () => {
   const createReport = async (data: CreateReportType) => {
     const { pageName, email, report } = data;
 
-    // await $fetch(`${apiUrl}reports/create-report`, {
+    // await $fetch(`${config.public.baseURL}reports/create-report`, {
     //   method: "POST",
     //   body: {
     //     pageName,
@@ -73,10 +73,13 @@ export const fetchPostsApi = () => {
     // });
 
     try {
-      const response = await $fetch(`${apiUrl}reports/create-report`, {
-        method: "POST",
-        body: { pageName, email, report },
-      });
+      const response = await $fetch(
+        `${config.public.apiURL}reports/create-report`,
+        {
+          method: "POST",
+          body: { pageName, email, report },
+        }
+      );
       return response;
     } catch (error: any) {
       console.log(error?.cause);
@@ -91,14 +94,14 @@ export const fetchPostsApi = () => {
     data: IParsingContentData,
     host: string | undefined
   ) => {
-    return await $fetch(`${apiUrl}parse/content`, {
+    return await $fetch(`${config.public.apiURL}parse/content`, {
       method: "POST",
       body: { ...data, host },
     });
   };
 
   const getWpClasses = async (url: string, host: string | undefined) => {
-    return await $fetch(`${apiUrl}parse/classes`, {
+    return await $fetch(`${config.public.apiURL}parse/classes`, {
       method: "POST",
       body: {
         url,

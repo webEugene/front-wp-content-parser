@@ -42,6 +42,11 @@ export default defineNuxtConfig({
       scrollBehaviorType: "smooth",
     },
   },
+  runtimeConfig: {
+    public: {
+      apiURL: "",
+    },
+  },
   compatibilityDate: "2024-11-01",
   eslint: {
     config: {

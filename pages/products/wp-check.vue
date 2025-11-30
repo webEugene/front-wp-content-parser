@@ -28,7 +28,11 @@ async function checkWpDetect() {
       }
     );
 
-    if (fetchError.value) {
+    if (fetchError.value && fetchError.value?.statusCode === 500) {
+      error.value =
+        "Something went wrong. Please check your internet connection. Or try a bit later";
+      response.value = null;
+    } else if (fetchError.value) {
       error.value = fetchError.value.message;
       response.value = null;
     } else {
