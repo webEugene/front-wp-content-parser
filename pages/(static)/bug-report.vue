@@ -114,7 +114,7 @@ const getCharacterLength = computed(() => {
       </h2>
       <p class="mt-2">
         Please, describe error that you faced with, and we try to fix it as fast
-        as possible. And we very appreciate your help to make our service
+        as possible. And we very appreciate your help to make our services
         better.
       </p>
       <!-- <br />

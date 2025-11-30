@@ -6,3 +6,9 @@ body {
   font-family: "Onest", sans-serif;
   background-color: rgb(248, 249, 251);
 }
+
+code {
+  background-color: #c7c7c7;
+  border-radius: 5px;
+  padding-inline: 5px;
+}
