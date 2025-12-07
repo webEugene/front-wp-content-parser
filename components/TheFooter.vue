@@ -56,9 +56,9 @@ const companyList = ref([
     url: "/terms-of-service",
   },
   {
-    title: "Privacy/Cookie Policy",
-    label: "Privacy/Cookie Policy",
-    url: "/privacy-and-cookie-policy",
+    title: "Privacy Policy",
+    label: "Privacy Policy",
+    url: "/privacy-policy",
   },
   {
     title: "Bug Report",
