@@ -192,7 +192,7 @@ const { downloadJSON, downloadCSV } = useDownload();
                 @click="
                   downloadJSON(filteredItems, cleanHostname(response.domain))
                 "
-                >Download JSON format</span
+                >Download JSON</span
               >
             </button>
             <button
@@ -204,7 +204,7 @@ const { downloadJSON, downloadCSV } = useDownload();
                 @click="
                   downloadCSV(filteredItems, cleanHostname(response.domain))
                 "
-                >Download CSV format</span
+                >Download CSV</span
               >
             </button>
           </div>
