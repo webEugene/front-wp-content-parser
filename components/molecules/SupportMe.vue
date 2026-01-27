@@ -6,7 +6,7 @@
       <nuxt-link
         class="flex flex-col md:flex-row justify-around items-center"
         target="_blank"
-        to="#"
+        to="https://secure.wayforpay.com/tips/t10a1c62e34cd"
         title="Buy Me A Coffee"
         rel="noopener noreferrer nofollow"
       >
