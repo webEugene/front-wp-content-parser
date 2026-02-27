@@ -17,6 +17,8 @@ export default defineNuxtConfig({
       },
     ],
     "@nuxtjs/seo",
+    "nuxt-gtag",
+    "@nuxtjs/sitemap",
   ],
   components: {
     dirs: [
@@ -56,6 +58,9 @@ export default defineNuxtConfig({
         semi: true,
       },
     },
+  },
+  gtag: {
+    id: "G-L3KQE89RQS",
   },
   image: {
     dir: "public/imgs",
