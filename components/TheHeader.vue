@@ -96,9 +96,9 @@ onBeforeUnmount(() => {
         >
           Bug Report
         </nuxt-link>
-        <nuxt-link to="#">
+        <!-- <nuxt-link to="#">
           <nuxt-img src="../imgs/kofi.png" class="w-8" alt="" />
-        </nuxt-link>
+        </nuxt-link> -->
         <!--        <Icon name="carbon:awake" /> -->
         <!--        <Icon name="carbon:asleep" /> -->
         <!--        <nuxt-link -->
