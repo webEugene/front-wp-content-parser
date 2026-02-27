@@ -145,8 +145,11 @@ useSeoMeta({
       </p>
       <h2 class="text-xl font-semibold text-gray-800 mb-2">10. Contact</h2>
       <p>
-        For legal or support inquiries: your-email@example.com (replace with
-        your actual address)
+        For legal or support inquiries:
+        <email-link user="eugene.bilan" domain="gmail.com" class="font-bold">
+          eugene.bilan@gmail.com
+        </email-link>
+        (replace with your actual address)
       </p>
 
       <h2 class="text-xl font-semibold text-gray-800 mb-2">
@@ -184,8 +187,11 @@ useSeoMeta({
       </ul>
 
       <p>
-        Send notices to: your-email@example.com (replace with your actual
-        address)
+        Send notices to:
+        <email-link user="eugene.bilan" domain="gmail.com" class="font-bold">
+          eugene.bilan@gmail.com
+        </email-link>
+        (replace with your actual address)
       </p>
       <h3 class="text-lg font-semibold text-gray-800 mb-2">
         11.2. Misuse of DMCA Notices
