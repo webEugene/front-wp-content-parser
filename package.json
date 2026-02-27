@@ -21,6 +21,7 @@
     "@vee-validate/rules": "^4.15.0",
     "@vee-validate/zod": "^4.15.0",
     "nuxt": "^3.15.4",
+    "nuxt-gtag": "^4.1.0",
     "nuxt-storage": "^1.2.2",
     "nuxt-svgo": "^4.0.17",
     "query-string": "^9.2.1",

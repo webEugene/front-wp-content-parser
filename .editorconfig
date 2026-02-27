@@ -1,0 +1,55 @@
+# top-most EditorConfig file
+root = true
+
+# ------------------------------------------------------------
+# Default for all files
+# ------------------------------------------------------------
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# ------------------------------------------------------------
+# Markdown / YAML / JSON keep trailing spaces where needed
+# ------------------------------------------------------------
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.yml]
+indent_size = 2
+
+[*.yaml]
+indent_size = 2
+
+[*.json]
+indent_size = 2
+
+# ------------------------------------------------------------
+# Vue single-file components (Nuxt)
+# ------------------------------------------------------------
+[*.vue]
+indent_style = space
+indent_size = 2
+
+# ------------------------------------------------------------
+# TypeScript (NestJS + Nuxt)
+# ------------------------------------------------------------
+[*.ts]
+indent_size = 2
+
+# ------------------------------------------------------------
+# JavaScript
+# ------------------------------------------------------------
+[*.js]
+indent_size = 2
+
+# ------------------------------------------------------------
+# Environment files
+# ------------------------------------------------------------
+[*.env]
+end_of_line = lf
+indent_style = none

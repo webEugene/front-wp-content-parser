@@ -25,7 +25,7 @@ async function checkWpDetect() {
       "/api/detect/wp-detect",
       {
         params: { url: url.value },
-      }
+      },
     );
 
     if (fetchError.value && fetchError.value?.statusCode === 500) {

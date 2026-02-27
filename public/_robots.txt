@@ -1,2 +1,4 @@
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://wp-content-parser.vercel.app/sitemap.xml
