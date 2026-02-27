@@ -60,6 +60,7 @@ export default defineNuxtConfig({
     },
   },
   gtag: {
+    enabled: process.env.NODE_ENV === "production",
     id: "G-L3KQE89RQS",
   },
   image: {
