@@ -98,16 +98,24 @@ const getLinkClass = (path: string) => {
           <p
             class="py-8 text-sm text-gray-500 lg:max-w-xs text-center lg:text-left"
           >
-            You can contact via email for your issues related with WEBSITE. You
-            can give feedback about current tools or suggest new tools that you
-            want to see on WEBSITE.
+            You can contact via email
+            <email-link
+              user="eugene.bilan"
+              domain="gmail.com"
+              class="font-bold"
+            >
+              eugene.bilan@gmail.com
+            </email-link>
+            for your issues related with WEBSITE. You can give feedback about
+            current tools or suggest new tools that you want to see on WEBSITE.
           </p>
-          <nuxt-link
-            to="/"
+          <email-link
+            user="eugene.bilan"
+            domain="gmail.com"
             class="py-2.5 px-5 h-9 block w-fit bg-indigo-600 rounded-full shadow-sm text-xs text-white mx-auto transition-all duration-500 hover:bg-indigo-700 lg:mx-0"
           >
             Contact us
-          </nuxt-link>
+          </email-link>
         </div>
         <!-- End Col -->
         <div class="lg:mx-auto text-left">

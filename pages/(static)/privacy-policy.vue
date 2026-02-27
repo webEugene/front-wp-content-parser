@@ -137,8 +137,11 @@ useSeoMeta({
       </p>
       <h2 class="text-xl font-semibold text-gray-800 mb-2">10. Contact</h2>
       <p>
-        For privacy inquiries: your-email@example.com (replace with your actual
-        address)
+        For privacy inquiries:
+        <email-link user="eugene.bilan" domain="gmail.com" class="font-bold">
+          eugene.bilan@gmail.com
+        </email-link>
+        (replace with your actual address)
       </p>
       <h2 class="text-xl font-semibold text-gray-800 mb-2">
         11. GDPR Compliance (EU Users)
@@ -182,7 +185,12 @@ useSeoMeta({
         <li>object to processing (e.g., analytics)</li>
         <li>withdraw consent at any time</li>
       </ul>
-      <p>To exercise any of these rights, contact: your-email@example.com</p>
+      <p>
+        To exercise any of these rights, contact:
+        <email-link user="eugene.bilan" domain="gmail.com" class="font-bold">
+          eugene.bilan@gmail.com
+        </email-link>
+      </p>
       <h3 class="text-lg font-semibold text-gray-800 mb-2">
         11.3. Data Transfers Outside the EU
       </h3>
@@ -226,7 +234,12 @@ useSeoMeta({
           exemption from discriminatory treatment for exercising privacy rights
         </li>
       </ul>
-      <p>Submit requests to: your-email@example.com</p>
+      <p>
+        Submit requests to:
+        <email-link user="eugene.bilan" domain="gmail.com" class="font-bold">
+          eugene.bilan@gmail.com
+        </email-link>
+      </p>
 
       <h3 class="text-lg font-semibold text-gray-800 mb-2">
         12.3. “Do Not Sell My Personal Information”
