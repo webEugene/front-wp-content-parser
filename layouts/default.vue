@@ -5,7 +5,7 @@
     <the-header />
     <main class="w-full pt-14">
       <slot />
-      <support-me />
+      <!-- <support-me /> -->
     </main>
     <the-footer />
   </div>
