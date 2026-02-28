@@ -21,7 +21,7 @@ defineProps<{
           </template>
         </heading-page>
       </div>
-      <support-me />
+      <!-- <support-me /> -->
     </main>
     <the-footer />
   </div>

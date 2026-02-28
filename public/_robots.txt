@@ -1,4 +1,11 @@
 User-agent: *
 Allow: /
+Disallow: /documentation
+Disallow: /homepage
+Disallow: /under-construction
+Disallow: /admin
+Disallow: /client
+Disallow: /admin/*
+Disallow: /client/*
 
 Sitemap: https://wp-content-parser.vercel.app/sitemap.xml
