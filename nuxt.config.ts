@@ -33,6 +33,7 @@ export default defineNuxtConfig({
     baseURL: "/",
     head: {
       title: "WP Content Parser",
+      titleTemplate: "%s",
       htmlAttrs: {
         lang: "en",
       },
@@ -43,6 +44,9 @@ export default defineNuxtConfig({
     options: {
       scrollBehaviorType: "smooth",
     },
+  },
+  site: {
+    name: "WP Content Parser",
   },
   runtimeConfig: {
     public: {
@@ -65,5 +69,15 @@ export default defineNuxtConfig({
   },
   image: {
     dir: "public/imgs",
+  },
+  sitemap: {
+    // exclude all URLs that start with /secret
+    exclude: [
+      "/admin/**",
+      "/client/**",
+      "/documentation",
+      "/homepage",
+      "/under-construction",
+    ],
   },
 });
