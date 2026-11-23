@@ -5,7 +5,7 @@ export const urlWithMessageSchema = z
   .refine(
     (value) =>
       !value ||
-      /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})(\/[\w.-]*)*\/?$/.test(value),
+      /^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,9})(\/[\w.-]*)*\/?$/.test(value),
     {
       message: "Please provide a valid URL",
     },

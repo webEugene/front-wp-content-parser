@@ -19,6 +19,7 @@ export default defineNuxtConfig({
     "@nuxtjs/seo",
     "nuxt-gtag",
     "@nuxtjs/sitemap",
+    "@pinia/nuxt",
   ],
   components: {
     dirs: [
@@ -50,7 +51,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiURL: "",
+      apiURL: process.env.NUXT_PUBLIC_API_URL,
     },
   },
   compatibilityDate: "2024-11-01",
