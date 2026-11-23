@@ -4,8 +4,14 @@
   </div>
 </template>
 
-<style>
-.content p {
-  padding: 5px 0 15px;
+<style lang="scss">
+.content {
+  p {
+    padding: 5px 0 15px;
+  }
+
+  .p-reset {
+    padding: 0;
+  }
 }
 </style>

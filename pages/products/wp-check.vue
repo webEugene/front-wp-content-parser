@@ -59,6 +59,13 @@ const disabledBtn = computed(() => {
         <p>
           Easy check if website is created on <strong>Wordpress</strong>. Just
           enter url and click to get the answer.
+          <span class="text-xs block mt-2"
+            >Please note that some websites are protected from parsing. In such
+            cases, the free version will return: "We cannot access your
+            website." The paid version offers advanced detection and improved
+            access handling, allowing you to bypass many of these restrictions
+            and get more accurate results.</span
+          >
         </p>
       </template>
     </heading-page>

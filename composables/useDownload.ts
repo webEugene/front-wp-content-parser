@@ -11,7 +11,7 @@ export function useDownload() {
 
     // CASE 1 — array of primitives (strings, numbers)
     const isPrimitiveArray = data.every(
-      (v) => typeof v !== "object" || v === null
+      (v) => typeof v !== "object" || v === null,
     );
 
     if (isPrimitiveArray) {
@@ -26,7 +26,7 @@ export function useDownload() {
       data.reduce((set, item) => {
         Object.keys(item || {}).forEach((k) => set.add(k));
         return set;
-      }, new Set<string>())
+      }, new Set<string>()),
     );
 
     const rows = data.map((obj) =>
@@ -42,7 +42,7 @@ export function useDownload() {
 
           return `"${safeValue}"`;
         })
-        .join(",")
+        .join(","),
     );
 
     return [keys.join(","), ...rows].join("\n");

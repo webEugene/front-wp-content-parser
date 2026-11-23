@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type InputType = "text" | "submit" | "reset";
+type InputType = "text" | "email" | "password" | "submit" | "reset";
 
 const { errorMessage = false } = defineProps<{
   id: string;

@@ -4,7 +4,7 @@ export const fetchPostsApi = () => {
   const config = useRuntimeConfig();
 
   const getWpDetectCheck = async (url: string, host: string | undefined) => {
-    return await $fetch(`${config.public.apiURL}urls/wp-check`, {
+    return await $fetch(`${config.public.apiURL}wp-parser/urls/wp-check`, {
       method: "POST",
       body: {
         url,
@@ -14,7 +14,7 @@ export const fetchPostsApi = () => {
   };
 
   const getSitemapFind = async (url: string, host: string | undefined) => {
-    return await $fetch(`${config.public.apiURL}urls/sitemap-check`, {
+    return await $fetch(`${config.public.apiURL}wp-parser/urls/sitemap-check`, {
       method: "POST",
       body: {
         url,
@@ -25,19 +25,22 @@ export const fetchPostsApi = () => {
 
   const getExtractedSitemapList = async (
     url: string,
-    host: string | undefined
+    host: string | undefined,
   ) => {
-    return await $fetch(`${config.public.apiURL}urls/sitemap-extract`, {
-      method: "POST",
-      body: {
-        url,
-        host,
+    return await $fetch(
+      `${config.public.apiURL}wp-parser/urls/sitemap-extract`,
+      {
+        method: "POST",
+        body: {
+          url,
+          host,
+        },
       },
-    });
+    );
   };
 
   const getGrabbedLinks = async (url: string, host: string | undefined) => {
-    return await $fetch(`${config.public.apiURL}urls/grab-links`, {
+    return await $fetch(`${config.public.apiURL}wp-parser/urls/grab-links`, {
       method: "POST",
       body: {
         url,
@@ -78,21 +81,21 @@ export const fetchPostsApi = () => {
         {
           method: "POST",
           body: { pageName, email, report },
-        }
+        },
       );
       return response;
     } catch (error: any) {
       console.log(error?.cause);
 
       throw new Error(
-        `${error} :Something is wrong with your internet connection or the server is unreachable.`
+        `${error} :Something is wrong with your internet connection or the server is unreachable.`,
       );
     }
   };
 
   const parseContent = async (
     data: IParsingContentData,
-    host: string | undefined
+    host: string | undefined,
   ) => {
     return await $fetch(`${config.public.apiURL}parse/content`, {
       method: "POST",

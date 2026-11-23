@@ -45,7 +45,7 @@ async function grabLink() {
       "/api/extract/grab-links",
       {
         params: { url: url.value },
-      }
+      },
     );
 
     if (fetchError.value && fetchError.value?.statusCode === 500) {

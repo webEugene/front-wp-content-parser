@@ -4,11 +4,11 @@ import TheLogin from "~/components/auth/TheLogin.vue";
 import TheRegister from "~/components/auth/TheRegister.vue";
 import ResetPassword from "~/components/auth/ResetPassword.vue";
 
-const currentForm = ref<"login" | "register" | "forgotPassword">("login");
+type AuthForm = "login" | "register" | "forgotPassword" | "resetPassword";
 
-function chooseAuthForm(
-  value: "login" | "register" | "forgotPassword" | "resetPassword",
-) {
+const currentForm = ref<AuthForm>("login");
+
+function chooseAuthForm(value: AuthForm): void {
   currentForm.value = value;
 }
 </script>

@@ -15,34 +15,39 @@ type ResetPasswordParams = {
 };
 
 export const authApi = () => {
-  const { apiUrl } = useAppConfig();
-
+  const config = useRuntimeConfig();
   const registerUser = async (entry: RegisterParams) => {
-    return await $fetch(`${apiUrl}wp-parser/auth/register`, {
+    return await $fetch(`${config.public.apiURL}wp-parser/auth/register`, {
       method: "POST",
       body: entry,
     });
   };
 
   const login = async (entry: LoginParams) => {
-    return await $fetch(`${apiUrl}wp-parser/auth/login`, {
+    return await $fetch(`${config.public.apiURL}wp-parser/auth/login`, {
       method: "POST",
       body: entry,
     });
   };
 
   const forgetPassword = async (entry: ForgetPasswordParams) => {
-    return await $fetch(`${apiUrl}wp-parser/auth/forgot-password`, {
-      method: "POST",
-      body: entry,
-    });
+    return await $fetch(
+      `${config.public.apiURL}wp-parser/auth/forgot-password`,
+      {
+        method: "POST",
+        body: entry,
+      },
+    );
   };
 
   const resetPassword = async (entry: ResetPasswordParams) => {
-    return await $fetch(`${apiUrl}wp-parser/auth/reset-password`, {
-      method: "POST",
-      body: entry,
-    });
+    return await $fetch(
+      `${config.public.apiURL}wp-parser/auth/reset-password`,
+      {
+        method: "POST",
+        body: entry,
+      },
+    );
   };
 
   return {

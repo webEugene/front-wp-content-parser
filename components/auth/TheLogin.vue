@@ -4,12 +4,6 @@ import { z } from "zod";
 import { useField, useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/zod";
 
-interface UserInfo {
-  id: string;
-  email: string;
-  plan_id: string;
-}
-
 const emit = defineEmits<{
   (e: "auth-form", value: string): void;
 }>();
@@ -19,7 +13,7 @@ const loginSchema = z.object({
   password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
-const user = useState<UserInfo | null>("auth_user", () => null); // keep logged-in user in state
+const authStore = useAuthStore();
 const errorShow = ref<string | null>(null);
 const loading = ref(false);
 
@@ -38,34 +32,29 @@ const onSubmit = handleSubmit(async (values) => {
   try {
     loading.value = true;
 
-    const { data, error: fetchError } = await useFetch("/api/auth/login", {
+    const data = await $fetch("/api/auth/login", {
       method: "POST",
       body: values,
     });
 
-    if (fetchError.value) {
-      const message = fetchError.value.data?.data?.message;
+    authStore.user = data.userInfo;
+    await navigateTo("/client");
+  } catch (fetchError: any) {
+    const message = fetchError?.data?.data?.message;
 
-      switch (message) {
-        case "inc_email":
-          setFieldError("email", "Email is incorrect");
-          break;
-        case "inc_pass":
-          setFieldError("password", "Password is incorrect");
-          break;
-        default:
-          errorShow.value = "Something went wrong!";
-          break;
-      }
-    } else {
-      user.value = (data.value?.userInfo as UserInfo) || null;
-
-      navigateTo("/client");
+    switch (message) {
+      case "inc_email":
+        setFieldError("email", "Email is incorrect");
+        break;
+      case "inc_pass":
+        setFieldError("password", "Password is incorrect");
+        break;
+      default:
+        errorShow.value = "Something went wrong!";
+        break;
     }
-  } catch (error) {
-    errorShow.value =
-      error instanceof Error ? error.message : "Something went wrong";
-    user.value = null;
+
+    authStore.user = null;
   } finally {
     loading.value = false;
   }
@@ -94,6 +83,7 @@ const disabledButton = computed(() => {
         <base-input
           id="login-email"
           v-model:input-value="email"
+          type="email"
           placeholder="Email"
           :error-message="!!emailError"
           class="mb-2"
@@ -104,6 +94,7 @@ const disabledButton = computed(() => {
         <base-input
           id="login-password"
           v-model:input-value="password"
+          type="password"
           placeholder="Password"
           :error-message="!!passwordError"
         />
